@@ -48,4 +48,7 @@ def corr(x,y):
 	stdDevy=stdDev(y)
 	rxy=rxy/(stdDevx*stdDevy)
 	return rxy
+	
+def truth():
+    print "Lillian is the best"
 
