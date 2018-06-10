@@ -58,10 +58,15 @@ def truth():
 wddata = '../data/' # working directory for data
 wdfigs = '../figs/'
 fStunting = open(wddata+'share-of-children-younger-than-5-who-suffer-from-stunting.csv','r')
-ncountries=169
+fgdp = open(wddata+'gdp-per-capita-in-2011usd.csv','r')
+ncountries=201
 nyears=218 # start in 1800
 stuntingCount=-9999.*np.ones(shape=(ncountries,nyears))
+gdp=-9999.*np.ones(shape=(ncountries,nyears))
 
+###############################################
+# Stunting
+###############################################
 countryNameList=[]
 countryNumToName={} # Dictionary of country numbers 
 countryNameToNum={} # Dictionary of country numbers 
@@ -91,14 +96,40 @@ for line in fStunting:
 	### Assign Array ###
 	stuntingCount[countryNum,y]=stuntingPrevailance
 
-### Mask stuntingCount ###
+# Add countries to the dictionary that weren't in the previous dataset
+missingCountries=['Austria','Belgium','Cyprus','Czechoslovakia','Denmark','Dominica','Estonia','Finland','Former USSR','Former Yugoslavia','France','Hong Kong','Iceland','Ireland','Israel','Latvia','Lithuania','Luxembourg','Malta','New Zealand','Norway','Poland','Portugal','Puerto Rico','Russia','Slovakia','Slovenia','Spain','Sweden','Switzerland','Taiwan','United Arab Emirates']
+for i in range(len(missingCountries)):
+	countryNum+=1
+	countryNumToName[countryNum]=missingCountries[i]
+	countryNameToNum[missingCountries[i]]=countryNum
+
+###############################################
+# GDP 
+###############################################
+for line in fgdp:
+	tmp=line.split(',')
+	countryName=tmp[0]
+	countryNum=countryNameToNum[countryName]
+	year=int(tmp[2])
+	if year<1800:
+		continue
+	y=year-1800
+	gdp[countryNum,y]=float(tmp[3])
+
+###############################################
+
+### Mask variables ###
 stuntingMask=np.ones(shape=(stuntingCount.shape)) # define as bad
+gdpMask=np.ones(shape=(gdp.shape)) # define as bad
 for countryNum in range(ncountries):
 	for y in range(nyears):
 		if stuntingCount[countryNum,y]!=-9999.:
 			stuntingMask[countryNum,y]=0 # 0=good
+		if gdp[countryNum,y]!=-9999.:
+			gdpMask[countryNum,y]=0 # 0=good
 
 stuntingCount=np.ma.masked_array(stuntingCount,stuntingMask)
+gdp=np.ma.masked_array(gdp,gdpMask)
 
 ### Plot any Country's Malnutrition ###
 country='Malawi'
@@ -113,9 +144,18 @@ plt.ylabel('Percent Children under 5 Stunted')
 plt.savefig(wdfigs+'stuntingCount'+country+'.pdf')
 plt.clf()
 
-
-
-
+### Plot any Country's GDP ###
+country='Malawi'
+countryNum=countryNameToNum[country]
+year=np.arange(1800,1800+nyears)
+year=np.ma.masked_array(year,gdpMask[countryNum])
+plt.clf() # clears the figure, do this before and after every plot
+plt.plot(year,gdp[countryNum], '*b')
+plt.title(country+' GDP')
+plt.grid(True)
+plt.ylabel('GDP Per Capita in 2011 USD')
+plt.savefig(wdfigs+'GDP'+country+'.pdf')
+plt.clf()
 
 
 
