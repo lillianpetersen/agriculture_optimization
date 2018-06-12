@@ -1,11 +1,9 @@
 import os
 import matplotlib.pyplot as plt
-import descarteslabs as dl
 import numpy as np
 import math
 import sys
 from sys import exit
-
 ###############################################
 # Functions
 ###############################################
@@ -55,18 +53,24 @@ def truth():
 
 ###############################################
 
-wddata = '../data/' # working directory for data
-wdfigs = '../figs/'
+wddata = '\\Users\\garyk\\Documents\\python_code\\agriculture_optimization/data/' # working directory for data
+wdfigs = '\\Users\\garyk\\Documents\\python_code\\agriculture_optimization/figs/'
 fStunting = open(wddata+'share-of-children-younger-than-5-who-suffer-from-stunting.csv','r')
 fgdp = open(wddata+'gdp-per-capita-in-2011usd.csv','r')
+ffoodpricevolat = open(wddata+'domestic-food-price-volatility-index.csv','r')
+ffooddef=open(wddata+'depth-of-the-food-deficit.csv','r')
+funderweight=open(wddata+'share-of-children-younger-than-5-who-are-underweight-for-their-age.csv','r')
+
 ncountries=201
 nyears=218 # start in 1800
 stuntingCount=-9999.*np.ones(shape=(ncountries,nyears))
 gdp=-9999.*np.ones(shape=(ncountries,nyears))
+foodpricevolat=-9999.*np.ones(shape=(ncountries,nyears))
+fooddef=-9999.*np.ones(shape=(ncountries,nyears))
+underweight=-9999.*np.ones(shape=(ncountries,nyears))
 
 ###############################################
 # Stunting
-###############################################
 countryNameList=[]
 countryNumToName={} # Dictionary of country numbers 
 countryNameToNum={} # Dictionary of country numbers 
@@ -104,8 +108,39 @@ for i in range(len(missingCountries)):
 	countryNameToNum[missingCountries[i]]=countryNum
 
 ###############################################
-# GDP 
+firstline=True
+for line in funderweight:
+    if firstline:
+        firstline=False
+        continue
+    tmp=line.split(',')
+    countryName=tmp[0]
+    countryNum=countryNameToNum[countryName]
+    year=int(tmp[2])
+    if year<1800:
+        continue
+    y=year-1800
+    underweight[countryNum,y]=float(tmp[3])
+
 ###############################################
+#garko tries to do food volatility pls have mercy ### yeah uhm this didn't work
+firstline=True #for skipping header
+for line in ffoodpricevolat:
+    if firstline:
+        firstline = False
+        continue
+    tmp=line.split(',')
+    countryName=tmp[0]
+    if countryName==any(countryNameList) or countryName==any(missingCountries):
+        countryNum=countryNameToNum[countryName]
+        year=int(tmp[2])
+        if year<1800:
+            continue
+        y=year-1800.
+        foodpricevolat[countryNum,y]=float(tmp[3])
+
+###############################################
+# GDP 
 for line in fgdp:
 	tmp=line.split(',')
 	countryName=tmp[0]
@@ -117,22 +152,61 @@ for line in fgdp:
 	gdp[countryNum,y]=float(tmp[3])
 
 ###############################################
+#food deficit
+firstline=True
+for line in ffooddef:
+    if firstline:
+        firstline=False
+        continue
+    tmp=line.split(',')
+    countryName=tmp[0]
+    if countryName==any(countryNameList) or countryName==any(missingCountries):
+        countryNum=countryNameToNum[countryName]
+        year=int(tmp[2])
+        if year<1800:
+		continue
+        y=year-1800
+        fooddef[countryNum,y]=float(tmp[3])
+##############################################
 
 ### Mask variables ###
 stuntingMask=np.ones(shape=(stuntingCount.shape)) # define as bad
 gdpMask=np.ones(shape=(gdp.shape)) # define as bad
+foodpricevolatMask=np.ones(shape=(foodpricevolat.shape))
+fooddefMask=np.ones(shape=(fooddef.shape))
+underweightMask=np.ones(shape=(fooddef.shape))
 for countryNum in range(ncountries):
 	for y in range(nyears):
 		if stuntingCount[countryNum,y]!=-9999.:
 			stuntingMask[countryNum,y]=0 # 0=good
 		if gdp[countryNum,y]!=-9999.:
 			gdpMask[countryNum,y]=0 # 0=good
-
+		if foodpricevolat[countryNum,y]!=-9999.:
+			foodpricevolatMask[countryNum,y]=0 # 0=good
+		if underweight[countryNum,y]!=-9999.:
+		    underweightMask[countryNum,y]=0
+		if fooddef[countryNum,y]!=-9999.:
+		    fooddefMask[countryNum,y]=0
+			    
 stuntingCount=np.ma.masked_array(stuntingCount,stuntingMask)
 gdp=np.ma.masked_array(gdp,gdpMask)
+underweight=np.ma.masked_array(underweight,underweightMask)
+#foodpricevolat=np.ma.masked_array(foodpricevolat,foodpricevolatMask)
 
-### Plot any Country's Malnutrition ###
+### Plot any Country's Stunting ###
 country='Malawi'
+countryNum=countryNameToNum[country]
+year=np.arange(1800,1800+nyears)
+year=np.ma.masked_array(year,stuntingMask[countryNum])
+plt.clf() # clears the figure, do this before and after every plot
+plt.plot(year,stuntingCount[countryNum], '*b')
+plt.title(country+' Stunting Percent')
+plt.grid(True)
+plt.ylabel('Percent Children under 5 Stunted')
+plt.savefig(wdfigs+'stuntingCount'+country+'.pdf')
+plt.clf()
+
+country='North Korea'
 countryNum=countryNameToNum[country]
 year=np.arange(1800,1800+nyears)
 year=np.ma.masked_array(year,stuntingMask[countryNum])
@@ -157,8 +231,51 @@ plt.ylabel('GDP Per Capita in 2011 USD')
 plt.savefig(wdfigs+'GDP'+country+'.pdf')
 plt.clf()
 
+### Plot any Country's Food Price Volatility ###
+country='Benin'
+countryNum=countryNameToNum[country]
+year=np.arange(1800,1800+nyears)
+year=np.ma.masked_array(year,foodpricevolatMask[countryNum])
+plt.clf()
+plt.plot(year,foodpricevolat[countryNum], '*b')
+plt.title(country+' Food Price Volatility')
+plt.grid(True)
+plt.ylabel('Domestic Food Price Volatility Index')
+plt.savefig(wdfigs+'FoodPriceVolatility'+country+'.pdf')
+plt.clf()
 
+### Plot any Country's % Children Underweight ### for some reason it isn't showing all the points
+country='Albania'
+countryNum=countryNameToNum[country]
+year=np.arange(1800,1800+nyears)
+year=np.ma.masked_array(year,underweightMask[countryNum])
+plt.clf()
+plt.plot(year,underweight[countryNum],'*b')
+plt.title(country+' Percent ChildrenUnderweight')
+plt.grid(True)
+plt.ylabel('Percent Children Underweight')
+plt.savefig(wdfigs+'percentchildunderweight'+country+'.pdf')
+plt.clf()
 
+### Plot Stunting by GDP
+country='Malawi'
+countryNum=countryNameToNum[country]
+year=np.arange(1800,1800+nyears)
+year=np.ma.masked_array(year,stuntingMask[countryNum])
+plt.clf()
+plt.plot(gdp[countryNum],stuntingCount[countryNum], '*b')
+plt.title(country+' Stunting Percent by GDP')
+plt.grid(True)
+plt.ylabel('Percent Children under 5 Stunted')
+plt.xlabel('GDP per Capita')
+plt.savefig(wdfigs+'stuntingbygdp'+country+'.pdf')
+plt.clf()
 
-
-
+###correlating stunting and gdp in a country
+country='Malawi'
+countryNum=countryNameToNum[country]
+year=np.arange(1800,1800+nyears)
+year=np.ma.masked_array(year,stuntingMask[countryNum])
+gdpmaskbystunt=np.ma.masked_array(gdp,stuntingMask)
+print(np.ma.corrcoef(gdp[countryNum],stuntingCount[countryNum]))
+print(np.cov(np.ma.corrcoef(gdp[countryNum],stuntingCount[countryNum])))
