@@ -48,8 +48,8 @@ def corr(x,y):
 	return rxy
 	
 def truth():
-    print "Lillian is the best"
-    print "Garyk is even better ;)"
+	print "Lillian is the best"
+	print "Garyk is even better ;)"
 
 ###############################################
 
@@ -101,43 +101,43 @@ for line in fStunting:
 	stuntingCount[countryNum,y]=stuntingPrevailance
 
 # Add countries to the dictionary that weren't in the previous dataset
-missingCountries=['Austria','Belgium','Cyprus','Czechoslovakia','Denmark','Dominica','Estonia','Finland','Former USSR','Former Yugoslavia','France','Hong Kong','Iceland','Ireland','Israel','Latvia','Lithuania','Luxembourg','Malta','New Zealand','Norway','Poland','Portugal','Puerto Rico','Russia','Slovakia','Slovenia','Spain','Sweden','Switzerland','Taiwan','United Arab Emirates']
-for i in range(len(missingCountries)):
-	countryNum+=1
-	countryNumToName[countryNum]=missingCountries[i]
-	countryNameToNum[missingCountries[i]]=countryNum
+#missingCountries=['Austria','Belgium','Cyprus','Czechoslovakia','Denmark','Dominica','Estonia','Finland','Former USSR','Former Yugoslavia','France','Hong Kong','Iceland','Ireland','Israel','Latvia','Lithuania','Luxembourg','Malta','New Zealand','Norway','Poland','Portugal','Puerto Rico','Russia','Slovakia','Slovenia','Spain','Sweden','Switzerland','Taiwan','United Arab Emirates']
+#for i in range(len(missingCountries)):
+#	countryNum+=1
+#	countryNumToName[countryNum]=missingCountries[i]
+#	countryNameToNum[missingCountries[i]]=countryNum
 
 ###############################################
-firstline=True
 for line in funderweight:
-    if firstline:
-        firstline=False
-        continue
-    tmp=line.split(',')
-    countryName=tmp[0]
-    countryNum=countryNameToNum[countryName]
-    year=int(tmp[2])
-    if year<1800:
-        continue
-    y=year-1800
-    underweight[countryNum,y]=float(tmp[3])
+	tmp=line.split(',')
+	countryName=tmp[0]
+	countryNum=countryNameToNum[countryName]
+	year=int(tmp[2])
+	if year<1800:
+		continue
+	y=year-1800
+	underweight[countryNum,y]=float(tmp[3])
 
 ###############################################
 #garko tries to do food volatility pls have mercy ### yeah uhm this didn't work
-firstline=True #for skipping header
 for line in ffoodpricevolat:
-    if firstline:
-        firstline = False
-        continue
-    tmp=line.split(',')
-    countryName=tmp[0]
-    if countryName==any(countryNameList) or countryName==any(missingCountries):
-        countryNum=countryNameToNum[countryName]
-        year=int(tmp[2])
-        if year<1800:
-            continue
-        y=year-1800.
-        foodpricevolat[countryNum,y]=float(tmp[3])
+	if firstline:
+		firstline = False
+		continue
+	tmp=line.split(',')
+	countryName=tmp[0]
+	try:
+		countryNum=countryNameToNum[countryName]
+	except:
+		countryNum+=1
+		countryNumToName[countryNum]=missingCountries[i]
+		countryNameToNum[missingCountries[i]]=countryNum
+			
+   year=int(tmp[2])
+   if year<1800:
+	   continue
+   y=year-1800.
+   foodpricevolat[countryNum,y]=float(tmp[3])
 
 ###############################################
 # GDP 
@@ -155,18 +155,18 @@ for line in fgdp:
 #food deficit
 firstline=True
 for line in ffooddef:
-    if firstline:
-        firstline=False
-        continue
-    tmp=line.split(',')
-    countryName=tmp[0]
-    if countryName==any(countryNameList) or countryName==any(missingCountries):
-        countryNum=countryNameToNum[countryName]
-        year=int(tmp[2])
-        if year<1800:
+	if firstline:
+		firstline=False
 		continue
-        y=year-1800
-        fooddef[countryNum,y]=float(tmp[3])
+	tmp=line.split(',')
+	countryName=tmp[0]
+	if countryName==any(countryNameList) or countryName==any(missingCountries):
+		countryNum=countryNameToNum[countryName]
+		year=int(tmp[2])
+		if year<1800:
+		continue
+		y=year-1800
+		fooddef[countryNum,y]=float(tmp[3])
 ##############################################
 
 ### Mask variables ###
@@ -184,10 +184,10 @@ for countryNum in range(ncountries):
 		if foodpricevolat[countryNum,y]!=-9999.:
 			foodpricevolatMask[countryNum,y]=0 # 0=good
 		if underweight[countryNum,y]!=-9999.:
-		    underweightMask[countryNum,y]=0
+			underweightMask[countryNum,y]=0
 		if fooddef[countryNum,y]!=-9999.:
-		    fooddefMask[countryNum,y]=0
-			    
+			fooddefMask[countryNum,y]=0
+				
 stuntingCount=np.ma.masked_array(stuntingCount,stuntingMask)
 gdp=np.ma.masked_array(gdp,gdpMask)
 underweight=np.ma.masked_array(underweight,underweightMask)
