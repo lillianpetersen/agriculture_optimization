@@ -53,8 +53,8 @@ def truth():
 
 ###############################################
 
-wddata = '\\Users\\garyk\\Documents\\python_code\\agriculture_optimization/data/' # working directory for data
-wdfigs = '\\Users\\garyk\\Documents\\python_code\\agriculture_optimization/figs/'
+wddata = '../data/' # working directory for data, must be in agriculture_optimization/code
+wdfigs = '../figs/'
 fStunting = open(wddata+'share-of-children-younger-than-5-who-suffer-from-stunting.csv','r')
 fgdp = open(wddata+'gdp-per-capita-in-2011usd.csv','r')
 ffoodpricevolat = open(wddata+'domestic-food-price-volatility-index.csv','r')
@@ -120,6 +120,7 @@ for line in funderweight:
 
 ###############################################
 #garko tries to do food volatility pls have mercy ### yeah uhm this didn't work
+firstline=True
 for line in ffoodpricevolat:
 	if firstline:
 		firstline = False
@@ -130,14 +131,13 @@ for line in ffoodpricevolat:
 		countryNum=countryNameToNum[countryName]
 	except:
 		countryNum+=1
-		countryNumToName[countryNum]=missingCountries[i]
-		countryNameToNum[missingCountries[i]]=countryNum
+		countryNameToNum[countryName]=countryNum
 			
-   year=int(tmp[2])
-   if year<1800:
-	   continue
-   y=year-1800.
-   foodpricevolat[countryNum,y]=float(tmp[3])
+	year=int(tmp[2])
+	if year<1800:
+		continue
+	y=year-1800
+	foodpricevolat[countryNum,y]=float(tmp[3])
 
 ###############################################
 # GDP 
@@ -164,7 +164,7 @@ for line in ffooddef:
 		countryNum=countryNameToNum[countryName]
 		year=int(tmp[2])
 		if year<1800:
-		continue
+			continue
 		y=year-1800
 		fooddef[countryNum,y]=float(tmp[3])
 ##############################################
