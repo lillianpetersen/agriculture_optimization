@@ -281,16 +281,16 @@ plt.clf()
 ### Plot Stunting by GDP
 country='Malawi'
 countryNum=countryNameToNum[country]
-year=np.arange(1800,1800+nyears)
-year=np.ma.masked_array(year,stuntingMask[countryNum])
 plt.clf()
-plt.plot(gdp[countryNum],stuntingCount[countryNum], '*b')
+gdpM=np.ma.masked_array(gdp[countryNum],stuntingMask[countryNum])
+plt.plot(gdpM,stuntingCount[countryNum], '*b')
 plt.title(country+' Stunting Percent by GDP')
 plt.grid(True)
 plt.ylabel('Percent Children under 5 Stunted')
 plt.xlabel('GDP per Capita')
 plt.savefig(wdfigs+'stuntingbygdp'+country+'.pdf')
 plt.clf()
+exit()
 
 ###correlating stunting and gdp in a country
 country='Malawi'
@@ -299,4 +299,4 @@ year=np.arange(1800,1800+nyears)
 year=np.ma.masked_array(year,stuntingMask[countryNum])
 gdpmaskbystunt=np.ma.masked_array(gdp,stuntingMask)
 print(np.ma.corrcoef(gdp[countryNum],stuntingCount[countryNum]))
-print(np.cov(np.ma.corrcoef(gdp[countryNum],stuntingCount[countryNum])))
+print(np.cov((gdp[countryNum],stuntingCount[countryNum])))
