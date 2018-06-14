@@ -1,0 +1,114 @@
+[Dictionary]
+Version=CSPro 3.3
+Label=WHO Z-scores for height and weight at the household level
+Name=ETHW41FL
+RecordTypeStart=0
+RecordTypeLen=0
+Positions=Absolute
+ZeroFill=No
+DecimalChar=Yes
+
+[Level]
+Label=WHO z-score Data questionnaire
+Name=Z_SCORES
+
+[IdItems]
+
+[Item]
+Label=Case Identification
+Name=HWHHID
+Start=1
+Len=12
+DataType=Alpha
+
+[Item]
+Label=Line
+Name=HWLINE
+Start=16
+Len=3
+
+[Record]
+Label=HW Data record
+Name=HWREC
+RecordTypeValue=''
+RecordLen=35
+
+[Item]
+Label=Data from HH or individual
+Name=HWLEVEL
+Start=19
+Len=1
+
+[ValueSet]
+Label=Data from HH or individual
+Name=HWLEVEL_VS1
+Value=1;From household
+Value=2;From individual questionnaire
+
+[Item]
+Label=Ht/A Standard deviations (according to WHO)
+Name=HC70
+Start=20
+Len=4
+
+[ValueSet]
+Label=Ht/A Standard deviations (according to WHO)
+Name=HC70_VS1
+Value=9996;Height out of plausible limits
+Value=9997;Age in days out of plausible limits
+Value=9998;Flagged cases
+Value=9999;Missing
+Name=MISSING,Special
+Value='    ';NotAppl
+Name=NOTAPPL,Special
+
+[Item]
+Label=Wt/A Standard deviations (according to WHO)
+Name=HC71
+Start=24
+Len=4
+
+[ValueSet]
+Label=Wt/A Standard deviations (according to WHO)
+Name=HC71_VS1
+Value=9996;Height out of plausible limits
+Value=9997;Age in days out of plausible limits
+Value=9998;Flagged cases
+Value=9999;Missing
+Name=MISSING,Special
+Value='    ';NotAppl
+Name=NOTAPPL,Special
+
+[Item]
+Label=Wt/Ht Standard deviations (according to WHO)
+Name=HC72
+Start=28
+Len=4
+
+[ValueSet]
+Label=Wt/Ht Standard deviations (according to WHO)
+Name=HC72_VS1
+Value=9996;Height out of plausible limits
+Value=9997;Age in days out of plausible limits
+Value=9998;Flagged cases
+Value=9999;Missing
+Name=MISSING,Special
+Value='    ';NotAppl
+Name=NOTAPPL,Special
+
+[Item]
+Label=BMI Standard deviations (according to WHO)
+Name=HC73
+Start=32
+Len=4
+
+[ValueSet]
+Label=BMI Standard deviations (according to WHO)
+Name=HC73_VS1
+Value=9996;Height out of plausible limits
+Value=9997;Age in days out of plausible limits
+Value=9998;Flagged cases
+Value=9999;Missing
+Name=MISSING,Special
+Value='    ';NotAppl
+Name=NOTAPPL,Special

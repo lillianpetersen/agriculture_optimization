@@ -1,0 +1,99 @@
+<xml xmlns:v="urn:schemas-microsoft-com:vml"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel">
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="637"/>
+ </o:shapelayout><v:shapetype id="_x0000_t201" coordsize="21600,21600" o:spt="201"
+  path="m,l,21600r21600,l21600,xe">
+  <v:stroke joinstyle="miter"/>
+  <v:path shadowok="f" o:extrusionok="f" strokeok="f" fillok="f" o:connecttype="rect"/>
+  <o:lock v:ext="edit" shapetype="t"/>
+ </v:shapetype><v:shape id="cnt_GroupFilter" o:spid="_x0000_s652366" type="#_x0000_t201"
+  style='position:absolute;margin-left:9.75pt;margin-top:39.75pt;width:129.75pt;
+  height:17.25pt;z-index:1' o:button="t" filled="f" fillcolor="windowText [64]"
+  strokecolor="windowText [64]" o:insetmode="auto">
+  <v:fill color2="window [65]" o:detectmouseclick="t"/>
+  <o:lock v:ext="edit" rotation="t" text="t"/>
+  <x:ClientData ObjectType="Drop">
+   <x:MoveWithCells/>
+   <x:SizeWithCells/>
+   <x:Anchor>
+    1, 13, 2, 0, 7, 30, 2, 23</x:Anchor>
+   <x:PrintObject>False</x:PrintObject>
+   <x:AutoFill>False</x:AutoFill>
+   <x:FmlaMacro>[0]!Control_Change</x:FmlaMacro>
+   <x:FmlaLink>uxbGlobals!$B$100</x:FmlaLink>
+   <x:Val>0</x:Val>
+   <x:Min>0</x:Min>
+   <x:Max>16</x:Max>
+   <x:Inc>1</x:Inc>
+   <x:Page>1</x:Page>
+   <x:Dx>16</x:Dx>
+   <x:FmlaRange>auto_ddGroup_Filter</x:FmlaRange>
+   <x:Sel>1</x:Sel>
+   <x:NoThreeD2/>
+   <x:SelType>Single</x:SelType>
+   <x:LCT>Normal</x:LCT>
+   <x:DropStyle>Combo</x:DropStyle>
+   <x:DropLines>25</x:DropLines>
+  </x:ClientData>
+ </v:shape><v:shape id="cnt_Country" o:spid="_x0000_s652367" type="#_x0000_t201"
+  style='position:absolute;margin-left:168.75pt;margin-top:39.75pt;width:101.25pt;
+  height:17.25pt;z-index:2' o:button="t" filled="f" fillcolor="windowText [64]"
+  strokecolor="windowText [64]" o:insetmode="auto">
+  <v:fill color2="window [65]" o:detectmouseclick="t"/>
+  <o:lock v:ext="edit" rotation="t" text="t"/>
+  <x:ClientData ObjectType="Drop">
+   <x:MoveWithCells/>
+   <x:SizeWithCells/>
+   <x:Anchor>
+    9, 3, 2, 0, 14, 39, 2, 23</x:Anchor>
+   <x:PrintObject>False</x:PrintObject>
+   <x:RecalcAlways/>
+   <x:AutoFill>False</x:AutoFill>
+   <x:FmlaMacro>[0]!Control_Change</x:FmlaMacro>
+   <x:FmlaLink>uxbGlobals!$B$106</x:FmlaLink>
+   <x:Val>0</x:Val>
+   <x:Min>0</x:Min>
+   <x:Max>112</x:Max>
+   <x:Inc>1</x:Inc>
+   <x:Page>1</x:Page>
+   <x:Dx>16</x:Dx>
+   <x:FmlaRange>dd_flt_country</x:FmlaRange>
+   <x:Sel>1</x:Sel>
+   <x:NoThreeD2/>
+   <x:SelType>Single</x:SelType>
+   <x:LCT>Normal</x:LCT>
+   <x:DropStyle>Combo</x:DropStyle>
+   <x:DropLines>25</x:DropLines>
+  </x:ClientData>
+ </v:shape><v:shape id="cnt_WeightProfile" o:spid="_x0000_s652368" type="#_x0000_t201"
+  style='position:absolute;margin-left:299.25pt;margin-top:39.75pt;width:114pt;
+  height:17.25pt;z-index:3' o:button="t" filled="f" fillcolor="windowText [64]"
+  strokecolor="windowText [64]" o:insetmode="auto">
+  <v:fill color2="window [65]" o:detectmouseclick="t"/>
+  <o:lock v:ext="edit" rotation="t" text="t"/>
+  <x:ClientData ObjectType="Drop">
+   <x:MoveWithCells/>
+   <x:SizeWithCells/>
+   <x:Anchor>
+    14, 78, 2, 0, 19, 5, 2, 23</x:Anchor>
+   <x:PrintObject>False</x:PrintObject>
+   <x:AutoFill>False</x:AutoFill>
+   <x:FmlaMacro>[0]!Control_Change</x:FmlaMacro>
+   <x:FmlaLink>uxbGlobals!$B$98</x:FmlaLink>
+   <x:Val>0</x:Val>
+   <x:Min>0</x:Min>
+   <x:Max>6</x:Max>
+   <x:Inc>1</x:Inc>
+   <x:Page>1</x:Page>
+   <x:Dx>16</x:Dx>
+   <x:FmlaRange>ddWeightProfiles</x:FmlaRange>
+   <x:Sel>1</x:Sel>
+   <x:NoThreeD2/>
+   <x:SelType>Single</x:SelType>
+   <x:LCT>Normal</x:LCT>
+   <x:DropStyle>Combo</x:DropStyle>
+   <x:DropLines>8</x:DropLines>
+  </x:ClientData>
+ </v:shape></xml>

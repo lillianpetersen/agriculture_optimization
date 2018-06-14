@@ -1,0 +1,884 @@
+infix dictionary using "C:\COUNTRIES\ET41\ETBR41FL.DAT" {
+1 lines
+    str      caseid      1:   1-15  
+    byte     bidx        1:  16-17  
+    str      v000        1:  18-20  
+    long     v001        1:  21-28  
+    int      v002        1:  29-32  
+    int      v003        1:  33-35  
+    int      v004        1:  36-39  
+    long     v005        1:  40-47  
+    byte     v006        1:  48-49  
+    int      v007        1:  50-53  
+    int      v008        1:  54-57  
+    byte     v009        1:  58-59  
+    int      v010        1:  60-63  
+    int      v011        1:  64-67  
+    byte     v012        1:  68-69  
+    byte     v013        1:  70-70  
+    byte     v014        1:  71-71  
+    byte     v015        1:  72-72  
+    byte     v016        1:  73-74  
+    int      v017        1:  75-78  
+    byte     v018        1:  79-80  
+    byte     v019        1:  81-82  
+    byte     v019a       1:  83-83  
+    byte     v020        1:  84-84  
+    int      v021        1:  85-88  
+    int      v022        1:  89-92  
+    byte     v023        1:  93-94  
+    byte     v024        1:  95-96  
+    byte     v025        1:  97-97  
+    byte     v026        1:  98-98  
+    byte     v027        1:  99-99  
+    int      v028        1: 100-102 
+    byte     v029        1: 103-104 
+    int      v030        1: 105-107 
+    int      v031        1: 108-110 
+    byte     v032        1: 111-112 
+    long     v033        1: 113-120 
+    byte     v034        1: 121-122 
+    int      v040        1: 123-126 
+    byte     v042        1: 127-127 
+    byte     v043        1: 128-128 
+    byte     v044        1: 129-129 
+    byte     v101        1: 130-131 
+    byte     v102        1: 132-132 
+    byte     v103        1: 133-133 
+    byte     v104        1: 134-135 
+    byte     v105        1: 136-136 
+    byte     v106        1: 137-137 
+    byte     v107        1: 138-139 
+    byte     v113        1: 140-141 
+    int      v115        1: 142-144 
+    byte     v116        1: 145-146 
+    byte     v119        1: 147-147 
+    byte     v120        1: 148-148 
+    byte     v121        1: 149-149 
+    byte     v122        1: 150-150 
+    byte     v123        1: 151-151 
+    byte     v124        1: 152-152 
+    byte     v125        1: 153-153 
+    byte     v127        1: 154-155 
+    byte     v128        1: 156-157 
+    byte     v129        1: 158-159 
+    byte     v130        1: 160-160 
+    byte     v131        1: 161-162 
+    byte     v133        1: 163-164 
+    byte     v134        1: 165-165 
+    byte     v135        1: 166-166 
+    byte     v136        1: 167-168 
+    byte     v137        1: 169-170 
+    byte     v138        1: 171-172 
+    byte     v139        1: 173-174 
+    byte     v140        1: 175-175 
+    byte     v141        1: 176-176 
+    byte     v149        1: 177-177 
+    byte     v150        1: 178-179 
+    byte     v151        1: 180-180 
+    byte     v152        1: 181-182 
+    byte     v153        1: 183-183 
+    long     awfactt     1: 184-188 
+    long     awfactu     1: 189-193 
+    long     awfactr     1: 194-198 
+    long     awfacte     1: 199-203 
+    byte     v155        1: 204-204 
+    byte     v156        1: 205-205 
+    byte     v157        1: 206-206 
+    byte     v158        1: 207-207 
+    byte     v159        1: 208-208 
+    byte     v160        1: 209-209 
+    byte     v161        1: 210-211 
+    byte     v162        1: 212-212 
+    byte     v163        1: 213-213 
+    byte     v164        1: 214-214 
+    byte     v165        1: 215-215 
+    int      v166        1: 216-218 
+    byte     v201        1: 219-220 
+    byte     v202        1: 221-222 
+    byte     v203        1: 223-224 
+    byte     v204        1: 225-226 
+    byte     v205        1: 227-228 
+    byte     v206        1: 229-230 
+    byte     v207        1: 231-232 
+    byte     v208        1: 233-233 
+    byte     v209        1: 234-234 
+    byte     v210        1: 235-235 
+    int      v211        1: 236-239 
+    byte     v212        1: 240-241 
+    byte     v213        1: 242-242 
+    byte     v214        1: 243-244 
+    int      v215        1: 245-247 
+    byte     v216        1: 248-248 
+    byte     v217        1: 249-249 
+    byte     v218        1: 250-251 
+    byte     v219        1: 252-253 
+    byte     v220        1: 254-254 
+    int      v221        1: 255-257 
+    int      v222        1: 258-260 
+    byte     v223        1: 261-261 
+    byte     v224        1: 262-263 
+    byte     v225        1: 264-264 
+    int      v226        1: 265-267 
+    byte     v227        1: 268-268 
+    byte     v228        1: 269-269 
+    byte     v229        1: 270-271 
+    int      v230        1: 272-275 
+    int      v231        1: 276-279 
+    byte     v232        1: 280-280 
+    byte     v233        1: 281-282 
+    byte     v234        1: 283-283 
+    byte     v235        1: 284-285 
+    byte     v237        1: 286-286 
+    byte     v238        1: 287-287 
+    byte     v239        1: 288-288 
+    byte     v240        1: 289-290 
+    int      v241        1: 291-294 
+    int      v242        1: 295-298 
+    byte     v243        1: 299-299 
+    byte     v310        1: 300-301 
+    byte     v311        1: 302-302 
+    byte     v312        1: 303-304 
+    byte     v313        1: 305-305 
+    byte     v315        1: 306-307 
+    int      v316        1: 308-311 
+    int      v317        1: 312-315 
+    byte     v318        1: 316-316 
+    byte     v319        1: 317-317 
+    byte     v320        1: 318-318 
+    byte     v321        1: 319-319 
+    byte     v322        1: 320-320 
+    byte     v326        1: 321-322 
+    byte     v327        1: 323-323 
+    int      v337        1: 324-326 
+    byte     v359        1: 327-328 
+    byte     v360        1: 329-330 
+    byte     v361        1: 331-331 
+    byte     v362        1: 332-332 
+    byte     v363        1: 333-334 
+    byte     v364        1: 335-335 
+    byte     v367        1: 336-336 
+    byte     v375a       1: 337-338 
+    byte     v376        1: 339-340 
+    byte     v376a       1: 341-341 
+    byte     v379        1: 342-343 
+    byte     v380        1: 344-344 
+    byte     v384a       1: 345-345 
+    byte     v384b       1: 346-346 
+    byte     v384c       1: 347-347 
+    byte     v393        1: 348-348 
+    byte     v394        1: 349-349 
+    byte     v395        1: 350-350 
+    byte     v3a00a      1: 351-351 
+    byte     v3a00b      1: 352-352 
+    byte     v3a00c      1: 353-353 
+    byte     v3a00d      1: 354-354 
+    byte     v3a00e      1: 355-355 
+    byte     v3a00f      1: 356-356 
+    byte     v3a00g      1: 357-357 
+    byte     v3a00h      1: 358-358 
+    byte     v3a00i      1: 359-359 
+    byte     v3a00j      1: 360-360 
+    byte     v3a00k      1: 361-361 
+    byte     v3a00l      1: 362-362 
+    byte     v3a00m      1: 363-363 
+    byte     v3a00n      1: 364-364 
+    byte     v3a00o      1: 365-365 
+    byte     v3a00p      1: 366-366 
+    byte     v3a00q      1: 367-367 
+    byte     v3a00r      1: 368-368 
+    byte     v3a00s      1: 369-369 
+    byte     v3a00t      1: 370-370 
+    byte     v3a00u      1: 371-371 
+    byte     v3a00v      1: 372-372 
+    byte     v3a00w      1: 373-373 
+    byte     v3a00x      1: 374-374 
+    byte     v3a00y      1: 375-375 
+    byte     v3a00z      1: 376-376 
+    byte     v3a01       1: 377-377 
+    byte     v3a02       1: 378-378 
+    byte     v3a03       1: 379-379 
+    byte     v3a04       1: 380-380 
+    byte     v3a05       1: 381-381 
+    byte     v3a06       1: 382-382 
+    byte     v3a07       1: 383-384 
+    byte     v3a08a      1: 385-385 
+    byte     v3a08b      1: 386-386 
+    byte     v3a08c      1: 387-387 
+    byte     v3a08d      1: 388-388 
+    byte     v3a08e      1: 389-389 
+    byte     v3a08f      1: 390-390 
+    byte     v3a08g      1: 391-391 
+    byte     v3a08h      1: 392-392 
+    byte     v3a08i      1: 393-393 
+    byte     v3a08j      1: 394-394 
+    byte     v3a08k      1: 395-395 
+    byte     v3a08l      1: 396-396 
+    byte     v3a08m      1: 397-397 
+    byte     v3a08n      1: 398-398 
+    byte     v3a08o      1: 399-399 
+    byte     v3a08p      1: 400-400 
+    byte     v3a08q      1: 401-401 
+    byte     v3a08r      1: 402-402 
+    byte     v3a08s      1: 403-403 
+    byte     v3a08t      1: 404-404 
+    byte     v3a08u      1: 405-405 
+    byte     v3a08v      1: 406-406 
+    byte     v3a08w      1: 407-407 
+    byte     v3a08x      1: 408-408 
+    byte     v3a08z      1: 409-409 
+    byte     v401        1: 410-410 
+    byte     v404        1: 411-411 
+    byte     v405        1: 412-412 
+    byte     v406        1: 413-413 
+    byte     v407        1: 414-415 
+    byte     v408        1: 416-417 
+    byte     v415        1: 418-418 
+    byte     v416        1: 419-419 
+    byte     v417        1: 420-420 
+    byte     v418        1: 421-421 
+    byte     v419        1: 422-422 
+    int      v420        1: 423-425 
+    int      v421        1: 426-428 
+    int      v426        1: 429-431 
+    int      v437        1: 432-435 
+    int      v438        1: 436-439 
+    int      v439        1: 440-443 
+    int      v440        1: 444-447 
+    long     v441        1: 448-452 
+    long     v442        1: 453-457 
+    long     v443        1: 458-462 
+    long     v444        1: 463-467 
+    int      v444a       1: 468-471 
+    int      v445        1: 472-475 
+    int      v446        1: 476-479 
+    byte     v447        1: 480-480 
+    byte     v447a       1: 481-482 
+    byte     v452a       1: 483-483 
+    byte     v452b       1: 484-485 
+    byte     v452c       1: 486-486 
+    int      v453        1: 487-489 
+    byte     v454        1: 490-490 
+    byte     v455        1: 491-491 
+    int      v456        1: 492-494 
+    byte     v457        1: 495-495 
+    byte     v458        1: 496-496 
+    byte     v459        1: 497-497 
+    byte     v460        1: 498-498 
+    byte     v461        1: 499-499 
+    byte     v462        1: 500-500 
+    byte     v463a       1: 501-501 
+    byte     v463b       1: 502-502 
+    byte     v463c       1: 503-503 
+    byte     v463d       1: 504-504 
+    byte     v463e       1: 505-505 
+    byte     v463f       1: 506-506 
+    byte     v463g       1: 507-507 
+    byte     v463z       1: 508-508 
+    byte     v464        1: 509-510 
+    byte     v465        1: 511-512 
+    byte     v466        1: 513-513 
+    byte     v467a       1: 514-514 
+    byte     v467b       1: 515-515 
+    byte     v467c       1: 516-516 
+    byte     v467d       1: 517-517 
+    byte     v467e       1: 518-518 
+    byte     v467f       1: 519-519 
+    byte     v467g       1: 520-520 
+    byte     v468        1: 521-521 
+    byte     v469a       1: 522-522 
+    byte     v469b       1: 523-523 
+    byte     v469c       1: 524-524 
+    byte     v469d       1: 525-525 
+    byte     v469e       1: 526-526 
+    byte     v469f       1: 527-527 
+    byte     v469g       1: 528-528 
+    byte     v469h       1: 529-529 
+    byte     v469i       1: 530-530 
+    byte     v469j       1: 531-531 
+    byte     v469k       1: 532-532 
+    byte     v469l       1: 533-533 
+    byte     v469m       1: 534-534 
+    byte     v469n       1: 535-535 
+    byte     v469o       1: 536-536 
+    byte     v469p       1: 537-537 
+    byte     v469q       1: 538-538 
+    byte     v469r       1: 539-539 
+    byte     v469s       1: 540-540 
+    byte     v469t       1: 541-541 
+    byte     v469u       1: 542-542 
+    byte     v469v       1: 543-543 
+    byte     v469w       1: 544-544 
+    byte     v469x       1: 545-545 
+    byte     v469y       1: 546-546 
+    byte     v469z       1: 547-547 
+    byte     v469xx      1: 548-548 
+    byte     v469xy      1: 549-549 
+    byte     v469xz      1: 550-550 
+    byte     v470a       1: 551-551 
+    byte     v470b       1: 552-552 
+    byte     v470c       1: 553-553 
+    byte     v470d       1: 554-554 
+    byte     v470e       1: 555-555 
+    byte     v470f       1: 556-556 
+    byte     v470g       1: 557-557 
+    byte     v470h       1: 558-558 
+    byte     v470i       1: 559-559 
+    byte     v470j       1: 560-560 
+    byte     v470k       1: 561-561 
+    byte     v470l       1: 562-562 
+    byte     v470m       1: 563-563 
+    byte     v470n       1: 564-564 
+    byte     v470o       1: 565-565 
+    byte     v470p       1: 566-566 
+    byte     v470q       1: 567-567 
+    byte     v470r       1: 568-568 
+    byte     v470s       1: 569-569 
+    byte     v470t       1: 570-570 
+    byte     v470u       1: 571-571 
+    byte     v470v       1: 572-572 
+    byte     v470w       1: 573-573 
+    byte     v470x       1: 574-574 
+    byte     v470y       1: 575-575 
+    byte     v470z       1: 576-576 
+    byte     v470xx      1: 577-577 
+    byte     v470xy      1: 578-578 
+    byte     v470xz      1: 579-579 
+    byte     v501        1: 580-580 
+    byte     v502        1: 581-581 
+    byte     v503        1: 582-582 
+    byte     v504        1: 583-583 
+    byte     v505        1: 584-585 
+    byte     v506        1: 586-587 
+    byte     v507        1: 588-589 
+    int      v508        1: 590-593 
+    int      v509        1: 594-597 
+    byte     v510        1: 598-598 
+    byte     v511        1: 599-600 
+    byte     v512        1: 601-602 
+    byte     v513        1: 603-603 
+    byte     v525        1: 604-605 
+    int      v527        1: 606-608 
+    byte     v528        1: 609-610 
+    int      v529        1: 611-613 
+    byte     v530        1: 614-614 
+    byte     v531        1: 615-616 
+    byte     v532        1: 617-617 
+    byte     v535        1: 618-618 
+    byte     v536        1: 619-619 
+    byte     v537        1: 620-621 
+    byte     v602        1: 622-622 
+    int      v603        1: 623-625 
+    byte     v604        1: 626-626 
+    byte     v605        1: 627-627 
+    byte     v610        1: 628-628 
+    byte     v611        1: 629-629 
+    byte     v612        1: 630-630 
+    byte     v613        1: 631-632 
+    byte     v614        1: 633-633 
+    int      v616        1: 634-636 
+    byte     v621        1: 637-637 
+    byte     v623        1: 638-638 
+    byte     v624        1: 639-640 
+    byte     v625        1: 641-641 
+    byte     v626        1: 642-643 
+    byte     v627        1: 644-645 
+    byte     v628        1: 646-647 
+    byte     v629        1: 648-649 
+    byte     v630a       1: 650-650 
+    byte     v630b       1: 651-651 
+    byte     v630c       1: 652-652 
+    byte     v630d       1: 653-653 
+    byte     v630e       1: 654-654 
+    byte     v630f       1: 655-655 
+    byte     v630g       1: 656-656 
+    byte     v630h       1: 657-657 
+    byte     v630i       1: 658-658 
+    byte     v630j       1: 659-659 
+    byte     v630k       1: 660-660 
+    byte     v630l       1: 661-661 
+    byte     v630m       1: 662-662 
+    byte     v630n       1: 663-663 
+    byte     v630o       1: 664-664 
+    byte     v630x       1: 665-665 
+    byte     v631        1: 666-666 
+    byte     v632        1: 667-667 
+    byte     v633a       1: 668-668 
+    byte     v633b       1: 669-669 
+    byte     v633c       1: 670-670 
+    byte     v633d       1: 671-671 
+    byte     v633e       1: 672-672 
+    byte     v633f       1: 673-673 
+    byte     v633g       1: 674-674 
+    byte     v701        1: 675-675 
+    byte     v702        1: 676-677 
+    int      v704        1: 678-680 
+    byte     v705        1: 681-682 
+    byte     v714        1: 683-683 
+    byte     v715        1: 684-685 
+    int      v716        1: 686-688 
+    byte     v717        1: 689-690 
+    byte     v719        1: 691-691 
+    byte     v721        1: 692-692 
+    byte     v729        1: 693-693 
+    byte     v730        1: 694-695 
+    byte     v731        1: 696-696 
+    byte     v732        1: 697-697 
+    byte     v739        1: 698-698 
+    byte     v740        1: 699-699 
+    byte     v741        1: 700-700 
+    byte     v742        1: 701-701 
+    byte     v743a       1: 702-702 
+    byte     v743b       1: 703-703 
+    byte     v743c       1: 704-704 
+    byte     v743d       1: 705-705 
+    byte     v743e       1: 706-706 
+    byte     v744a       1: 707-707 
+    byte     v744b       1: 708-708 
+    byte     v744c       1: 709-709 
+    byte     v744d       1: 710-710 
+    byte     v744e       1: 711-711 
+    byte     bord        1: 712-713 
+    byte     b0          1: 714-714 
+    byte     b1          1: 715-716 
+    int      b2          1: 717-720 
+    int      b3          1: 721-724 
+    byte     b4          1: 725-725 
+    byte     b5          1: 726-726 
+    int      b6          1: 727-729 
+    int      b7          1: 730-732 
+    byte     b8          1: 733-734 
+    byte     b9          1: 735-735 
+    byte     b10         1: 736-736 
+    int      b11         1: 737-739 
+    int      b12         1: 740-742 
+    byte     b13         1: 743-743 
+    byte     b15         1: 744-744 
+    byte     b16         1: 745-746 
+    byte     midx        1: 747-747 
+    byte     m1          1: 748-748 
+    byte     m2a         1: 749-749 
+    byte     m2b         1: 750-750 
+    byte     m2c         1: 751-751 
+    byte     m2d         1: 752-752 
+    byte     m2e         1: 753-753 
+    byte     m2f         1: 754-754 
+    byte     m2g         1: 755-755 
+    byte     m2h         1: 756-756 
+    byte     m2i         1: 757-757 
+    byte     m2j         1: 758-758 
+    byte     m2k         1: 759-759 
+    byte     m2l         1: 760-760 
+    byte     m2m         1: 761-761 
+    byte     m2n         1: 762-762 
+    byte     m3a         1: 763-763 
+    byte     m3b         1: 764-764 
+    byte     m3c         1: 765-765 
+    byte     m3d         1: 766-766 
+    byte     m3e         1: 767-767 
+    byte     m3f         1: 768-768 
+    byte     m3g         1: 769-769 
+    byte     m3h         1: 770-770 
+    byte     m3i         1: 771-771 
+    byte     m3j         1: 772-772 
+    byte     m3k         1: 773-773 
+    byte     m3l         1: 774-774 
+    byte     m3m         1: 775-775 
+    byte     m3n         1: 776-776 
+    byte     m4          1: 777-778 
+    byte     m5          1: 779-780 
+    byte     m6          1: 781-782 
+    byte     m7          1: 783-784 
+    byte     m8          1: 785-786 
+    byte     m9          1: 787-788 
+    byte     m10         1: 789-789 
+    int      m11         1: 790-792 
+    byte     m13         1: 793-794 
+    byte     m14         1: 795-796 
+    byte     m15         1: 797-798 
+    byte     m17         1: 799-799 
+    byte     m18         1: 800-800 
+    int      m19         1: 801-804 
+    byte     m19a        1: 805-805 
+    byte     m27         1: 806-806 
+    byte     m28         1: 807-807 
+    byte     m29         1: 808-808 
+    int      m34         1: 809-811 
+    byte     m35         1: 812-813 
+    byte     m36         1: 814-815 
+    byte     m37a        1: 816-816 
+    byte     m37b        1: 817-817 
+    byte     m37c        1: 818-818 
+    byte     m37d        1: 819-819 
+    byte     m37e        1: 820-820 
+    byte     m37f        1: 821-821 
+    byte     m37g        1: 822-822 
+    byte     m37h        1: 823-823 
+    byte     m37i        1: 824-824 
+    byte     m37j        1: 825-825 
+    byte     m37k        1: 826-826 
+    byte     m37l        1: 827-827 
+    byte     m37m        1: 828-828 
+    byte     m37n        1: 829-829 
+    byte     m37o        1: 830-830 
+    byte     m37p        1: 831-831 
+    byte     m37q        1: 832-832 
+    byte     m37r        1: 833-833 
+    byte     m37s        1: 834-834 
+    byte     m37t        1: 835-835 
+    byte     m37u        1: 836-836 
+    byte     m37v        1: 837-837 
+    byte     m37w        1: 838-838 
+    byte     m37x        1: 839-839 
+    byte     m37y        1: 840-840 
+    byte     m37z        1: 841-841 
+    byte     m37xx       1: 842-842 
+    byte     m37xy       1: 843-843 
+    byte     m37xz       1: 844-844 
+    byte     m38         1: 845-845 
+    byte     m39         1: 846-846 
+    byte     m40a        1: 847-847 
+    byte     m40b        1: 848-848 
+    byte     m40c        1: 849-849 
+    byte     m40d        1: 850-850 
+    byte     m40e        1: 851-851 
+    byte     m40f        1: 852-852 
+    byte     m40g        1: 853-853 
+    byte     m40h        1: 854-854 
+    byte     m40i        1: 855-855 
+    byte     m40j        1: 856-856 
+    byte     m40k        1: 857-857 
+    byte     m40l        1: 858-858 
+    byte     m40m        1: 859-859 
+    byte     m40n        1: 860-860 
+    byte     m40o        1: 861-861 
+    byte     m40p        1: 862-862 
+    byte     m40q        1: 863-863 
+    byte     m40r        1: 864-864 
+    byte     m40s        1: 865-865 
+    byte     m40t        1: 866-866 
+    byte     m40u        1: 867-867 
+    byte     m40v        1: 868-868 
+    byte     m40w        1: 869-869 
+    byte     m40x        1: 870-870 
+    byte     m40y        1: 871-871 
+    byte     m40z        1: 872-872 
+    byte     m40xx       1: 873-873 
+    byte     m40xy       1: 874-874 
+    byte     m40xz       1: 875-875 
+    byte     m41         1: 876-877 
+    byte     m42a        1: 878-878 
+    byte     m42b        1: 879-879 
+    byte     m42c        1: 880-880 
+    byte     m42d        1: 881-881 
+    byte     m42e        1: 882-882 
+    byte     m43         1: 883-883 
+    byte     m44         1: 884-884 
+    byte     m45         1: 885-885 
+    int      m46         1: 886-888 
+    byte     m47         1: 889-889 
+    byte     m48         1: 890-890 
+    byte     m49a        1: 891-891 
+    byte     m49b        1: 892-892 
+    byte     m49c        1: 893-893 
+    byte     m49d        1: 894-894 
+    byte     m49e        1: 895-895 
+    byte     m49f        1: 896-896 
+    byte     m49g        1: 897-897 
+    byte     m49x        1: 898-898 
+    byte     m49z        1: 899-899 
+    byte     m50         1: 900-900 
+    int      m51         1: 901-903 
+    byte     m52         1: 904-905 
+    byte     m53         1: 906-907 
+    byte     m54         1: 908-908 
+    byte     m55a        1: 909-909 
+    byte     m55b        1: 910-910 
+    byte     m55c        1: 911-911 
+    byte     m55d        1: 912-912 
+    byte     m55e        1: 913-913 
+    byte     m55f        1: 914-914 
+    byte     m55g        1: 915-915 
+    byte     m55h        1: 916-916 
+    byte     m55i        1: 917-917 
+    byte     m55j        1: 918-918 
+    byte     m55k        1: 919-919 
+    byte     m55l        1: 920-920 
+    byte     m55m        1: 921-921 
+    byte     m55n        1: 922-922 
+    byte     m55x        1: 923-923 
+    byte     m55z        1: 924-924 
+    byte     m56         1: 925-925 
+    byte     hidx        1: 926-926 
+    byte     h1          1: 927-927 
+    byte     h2          1: 928-928 
+    byte     h2d         1: 929-930 
+    byte     h2m         1: 931-932 
+    int      h2y         1: 933-936 
+    byte     h3          1: 937-937 
+    byte     h3d         1: 938-939 
+    byte     h3m         1: 940-941 
+    int      h3y         1: 942-945 
+    byte     h4          1: 946-946 
+    byte     h4d         1: 947-948 
+    byte     h4m         1: 949-950 
+    int      h4y         1: 951-954 
+    byte     h5          1: 955-955 
+    byte     h5d         1: 956-957 
+    byte     h5m         1: 958-959 
+    int      h5y         1: 960-963 
+    byte     h6          1: 964-964 
+    byte     h6d         1: 965-966 
+    byte     h6m         1: 967-968 
+    int      h6y         1: 969-972 
+    byte     h7          1: 973-973 
+    byte     h7d         1: 974-975 
+    byte     h7m         1: 976-977 
+    int      h7y         1: 978-981 
+    byte     h8          1: 982-982 
+    byte     h8d         1: 983-984 
+    byte     h8m         1: 985-986 
+    int      h8y         1: 987-990 
+    byte     h9          1: 991-991 
+    byte     h9d         1: 992-993 
+    byte     h9m         1: 994-995 
+    int      h9y         1: 996-999 
+    byte     h0          1:1000-1000
+    byte     h0d         1:1001-1002
+    byte     h0m         1:1003-1004
+    int      h0y         1:1005-1008
+    byte     h10         1:1009-1009
+    byte     h11         1:1010-1010
+    byte     h12a        1:1011-1011
+    byte     h12b        1:1012-1012
+    byte     h12c        1:1013-1013
+    byte     h12d        1:1014-1014
+    byte     h12e        1:1015-1015
+    byte     h12f        1:1016-1016
+    byte     h12g        1:1017-1017
+    byte     h12h        1:1018-1018
+    byte     h12i        1:1019-1019
+    byte     h12j        1:1020-1020
+    byte     h12k        1:1021-1021
+    byte     h12l        1:1022-1022
+    byte     h12m        1:1023-1023
+    byte     h12n        1:1024-1024
+    byte     h12o        1:1025-1025
+    byte     h12p        1:1026-1026
+    byte     h12q        1:1027-1027
+    byte     h12r        1:1028-1028
+    byte     h12s        1:1029-1029
+    byte     h12t        1:1030-1030
+    byte     h12u        1:1031-1031
+    byte     h12v        1:1032-1032
+    byte     h12w        1:1033-1033
+    byte     h12x        1:1034-1034
+    byte     h12y        1:1035-1035
+    byte     h12z        1:1036-1036
+    byte     h13         1:1037-1037
+    byte     h14         1:1038-1038
+    byte     h15         1:1039-1039
+    byte     h15a        1:1040-1040
+    byte     h15b        1:1041-1041
+    byte     h15c        1:1042-1042
+    byte     h15d        1:1043-1043
+    byte     h15e        1:1044-1044
+    byte     h15f        1:1045-1045
+    byte     h15g        1:1046-1046
+    byte     h15h        1:1047-1047
+    byte     h20         1:1048-1048
+    byte     h21a        1:1049-1049
+    byte     h21         1:1050-1050
+    byte     h22         1:1051-1051
+    byte     h31         1:1052-1052
+    byte     h31b        1:1053-1053
+    byte     h32a        1:1054-1054
+    byte     h32b        1:1055-1055
+    byte     h32c        1:1056-1056
+    byte     h32d        1:1057-1057
+    byte     h32e        1:1058-1058
+    byte     h32f        1:1059-1059
+    byte     h32g        1:1060-1060
+    byte     h32h        1:1061-1061
+    byte     h32i        1:1062-1062
+    byte     h32j        1:1063-1063
+    byte     h32k        1:1064-1064
+    byte     h32l        1:1065-1065
+    byte     h32m        1:1066-1066
+    byte     h32n        1:1067-1067
+    byte     h32o        1:1068-1068
+    byte     h32p        1:1069-1069
+    byte     h32q        1:1070-1070
+    byte     h32r        1:1071-1071
+    byte     h32s        1:1072-1072
+    byte     h32t        1:1073-1073
+    byte     h32u        1:1074-1074
+    byte     h32v        1:1075-1075
+    byte     h32w        1:1076-1076
+    byte     h32x        1:1077-1077
+    byte     h32y        1:1078-1078
+    byte     h32z        1:1079-1079
+    byte     h33         1:1080-1080
+    byte     h33d        1:1081-1082
+    byte     h33m        1:1083-1084
+    int      h33y        1:1085-1088
+    byte     h34         1:1089-1089
+    byte     h35         1:1090-1090
+    byte     h36a        1:1091-1091
+    byte     h36b        1:1092-1092
+    byte     h36c        1:1093-1093
+    byte     h36d        1:1094-1094
+    byte     h36e        1:1095-1095
+    byte     h36f        1:1096-1096
+    byte     h37a        1:1097-1097
+    byte     h37b        1:1098-1098
+    byte     h37c        1:1099-1099
+    byte     h37d        1:1100-1100
+    byte     h37e        1:1101-1101
+    byte     h37f        1:1102-1102
+    byte     h37g        1:1103-1103
+    byte     h37h        1:1104-1104
+    byte     h37x        1:1105-1105
+    byte     h37y        1:1106-1106
+    byte     h37z        1:1107-1107
+    byte     h38         1:1108-1108
+    byte     h39         1:1109-1109
+    byte     hwidx       1:1110-1110
+    byte     hw1         1:1111-1112
+    int      hw2         1:1113-1115
+    int      hw3         1:1116-1119
+    int      hw4         1:1120-1123
+    int      hw5         1:1124-1127
+    long     hw6         1:1128-1132
+    int      hw7         1:1133-1136
+    int      hw8         1:1137-1140
+    long     hw9         1:1141-1145
+    int      hw10        1:1146-1149
+    int      hw11        1:1150-1153
+    long     hw12        1:1154-1158
+    byte     hw13        1:1159-1159
+    byte     hw15        1:1160-1160
+    byte     hw16        1:1161-1162
+    byte     hw17        1:1163-1164
+    byte     hw18        1:1165-1166
+    int      hw19        1:1167-1170
+    byte     hw51        1:1171-1172
+    byte     hw52        1:1173-1173
+    int      hw53        1:1174-1176
+    byte     hw55        1:1177-1177
+    int      hw56        1:1178-1181
+    byte     hw57        1:1182-1182
+    byte     hw58        1:1183-1183
+    byte     sintdg      1:1184-1185
+    byte     sintmg      1:1186-1187
+    int      sintyg      1:1188-1191
+    int      sintcg      1:1192-1195
+    byte     slan        1:1196-1196
+    byte     sintv       1:1197-1197
+    byte     sresp       1:1198-1198
+    byte     strans      1:1199-1199
+    byte     s101t       1:1200-1200
+    byte     s101h       1:1201-1202
+    byte     s101m       1:1203-1204
+    byte     s105mg      1:1205-1206
+    int      s105yg      1:1207-1210
+    int      s105cg      1:1211-1214
+    byte     s109        1:1215-1216
+    int      s227cg      1:1217-1220
+    int      s230ac      1:1221-1224
+    byte     s230af      1:1225-1225
+    int      s230b       1:1226-1228
+    byte     s230amg     1:1229-1230
+    int      s230ayg     1:1231-1234
+    int      s230acg     1:1235-1238
+    byte     s230f       1:1239-1239
+    byte     s234        1:1240-1240
+    byte     s234a       1:1241-1241
+    byte     s234c       1:1242-1243
+    byte     sd234b1     1:1244-1245
+    byte     sm234b1     1:1246-1247
+    int      sy234b1     1:1248-1251
+    byte     sd234b2     1:1252-1253
+    byte     sm234b2     1:1254-1255
+    int      sy234b2     1:1256-1259
+    byte     sd234b3     1:1260-1261
+    byte     sm234b3     1:1262-1263
+    int      sy234b3     1:1264-1267
+    byte     sd234b4     1:1268-1269
+    byte     sm234b4     1:1270-1271
+    int      sy234b4     1:1272-1275
+    byte     sd234b5     1:1276-1277
+    byte     sm234b5     1:1278-1279
+    int      sy234b5     1:1280-1283
+    byte     s312        1:1284-1285
+    byte     s319        1:1286-1287
+    int      s319d       1:1288-1290
+    byte     s329        1:1291-1292
+    byte     s482        1:1293-1293
+    byte     s483        1:1294-1294
+    byte     s484        1:1295-1296
+    byte     s489        1:1297-1297
+    byte     s489aa      1:1298-1298
+    byte     s489ab      1:1299-1299
+    byte     s489ac      1:1300-1300
+    byte     s489ad      1:1301-1301
+    byte     s489ae      1:1302-1302
+    byte     s489af      1:1303-1303
+    byte     s489ag      1:1304-1304
+    byte     s489ah      1:1305-1305
+    byte     s489ai      1:1306-1306
+    byte     s489aj      1:1307-1307
+    byte     s489ak      1:1308-1308
+    byte     s489al      1:1309-1309
+    byte     s489ax      1:1310-1310
+    byte     s508mg      1:1311-1312
+    int      s508yg      1:1313-1316
+    int      s508cg      1:1317-1320
+    byte     s617d       1:1321-1321
+    byte     s617e       1:1322-1322
+    byte     s702a       1:1323-1323
+    byte     s705        1:1324-1325
+    byte     s712a       1:1326-1326
+    byte     s1001aa     1:1327-1327
+    byte     s1001ab     1:1328-1328
+    byte     s1001ac     1:1329-1329
+    byte     s1001ad     1:1330-1330
+    byte     s1001ae     1:1331-1331
+    byte     s1001af     1:1332-1332
+    byte     s1001ag     1:1333-1333
+    byte     s1001ah     1:1334-1334
+    byte     s1001ai     1:1335-1335
+    byte     s1001aj     1:1336-1336
+    byte     s1001ak     1:1337-1337
+    byte     s1001ax     1:1338-1338
+    byte     s1005       1:1339-1339
+    byte     s1006       1:1340-1340
+    byte     s1008       1:1341-1341
+    byte     s1013a      1:1342-1342
+    byte     s1013b      1:1343-1343
+    byte     s1013c      1:1344-1344
+    byte     s1013d      1:1345-1345
+    byte     s1013z      1:1346-1346
+    byte     s1106       1:1347-1347
+    byte     s1111       1:1348-1348
+    byte     s1112       1:1349-1350
+    byte     s1114t      1:1351-1351
+    byte     s1114h      1:1352-1353
+    byte     s1114m      1:1354-1355
+    byte     idx92       1:1356-1357
+    byte     s215mg      1:1358-1359
+    int      s215yg      1:1360-1363
+    int      s215cg      1:1364-1367
+    byte     idx94       1:1368-1368
+    byte     s406a       1:1369-1369
+    byte     s406ba      1:1370-1370
+    byte     s406bb      1:1371-1371
+    byte     s406bc      1:1372-1372
+    byte     s406bd      1:1373-1373
+    byte     s406be      1:1374-1374
+    byte     s406bx      1:1375-1375
+    int      s432c       1:1376-1378
+    byte     s440a       1:1379-1379
+    byte     s442a       1:1380-1381
+    byte     s475c       1:1382-1382
+}

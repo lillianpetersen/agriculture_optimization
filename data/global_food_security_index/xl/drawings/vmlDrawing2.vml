@@ -1,0 +1,38 @@
+<xml xmlns:v="urn:schemas-microsoft-com:vml"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel">
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="195"/>
+ </o:shapelayout><v:shapetype id="_x0000_t201" coordsize="21600,21600" o:spt="201"
+  path="m,l,21600r21600,l21600,xe">
+  <v:stroke joinstyle="miter"/>
+  <v:path shadowok="f" o:extrusionok="f" strokeok="f" fillok="f" o:connecttype="rect"/>
+  <o:lock v:ext="edit" shapetype="t"/>
+ </v:shapetype><v:shape id="prm_cnt_GlobalZoom" o:spid="_x0000_s199682" type="#_x0000_t201"
+  style='position:absolute;margin-left:612.75pt;margin-top:3pt;width:52.5pt;
+  height:16.5pt;z-index:1' o:button="t" filled="f" fillcolor="windowText [64]"
+  strokecolor="windowText [64]" o:insetmode="auto">
+  <v:fill color2="window [65]" o:detectmouseclick="t"/>
+  <o:lock v:ext="edit" rotation="t" text="t"/>
+  <x:ClientData ObjectType="Drop">
+   <x:SizeWithCells/>
+   <x:Anchor>
+    7, 3, 0, 4, 7, 73, 0, 26</x:Anchor>
+   <x:AutoFill>False</x:AutoFill>
+   <x:FmlaMacro>[0]!Control_Change</x:FmlaMacro>
+   <x:FmlaLink>uxbGlobals!$B$97</x:FmlaLink>
+   <x:Val>0</x:Val>
+   <x:Min>0</x:Min>
+   <x:Max>0</x:Max>
+   <x:Inc>1</x:Inc>
+   <x:Page>6</x:Page>
+   <x:Dx>16</x:Dx>
+   <x:FmlaRange>ddGlobalZoom</x:FmlaRange>
+   <x:Sel>3</x:Sel>
+   <x:NoThreeD2/>
+   <x:SelType>Single</x:SelType>
+   <x:LCT>Normal</x:LCT>
+   <x:DropStyle>Combo</x:DropStyle>
+   <x:DropLines>25</x:DropLines>
+  </x:ClientData>
+ </v:shape></xml>

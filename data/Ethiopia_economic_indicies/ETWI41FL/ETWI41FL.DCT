@@ -1,0 +1,6 @@
+infix dictionary using "ETwi41.DAT" {
+1 lines
+    str      whhid       1:   1-12
+    float    wlthindf    1:  13-23
+    long     wlthind5    1:  24-28
+}
