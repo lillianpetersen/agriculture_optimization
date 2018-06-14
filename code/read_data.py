@@ -234,7 +234,7 @@ countryNum=countryNameToNum[country]
 year=np.arange(1800,1800+nyears)
 year=np.ma.masked_array(year,stuntingMask[countryNum])
 plt.clf() # clears the figure, do this before and after every plot
-plt.plot(year,stuntingCount[countryNum], '*b')
+plt.plot(np.ma.compressed(year),np.ma.compressed(stuntingCount[countryNum]), '*b')
 plt.title(country+' Stunting Percent')
 plt.grid(True)
 plt.ylabel('Percent Children under 5 Stunted')
@@ -268,12 +268,12 @@ plt.savefig(wdfigs+'FoodPriceVolatility'+country+'.pdf')
 plt.clf()
 
 ### Plot any Country's % Children Underweight ### for some reason it isn't showing all the points
-country='Albania'
+country='Benin'
 countryNum=countryNameToNum[country]
 year=np.arange(1800,1800+nyears)
 year=np.ma.masked_array(year,underweightMask[countryNum])
 plt.clf()
-plt.plot(year,underweight[countryNum],'*b')
+plt.plot(np.ma.compressed(year),np.ma.compressed(underweight[countryNum]),'*b')
 plt.title(country+' Percent ChildrenUnderweight')
 plt.grid(True)
 plt.ylabel('Percent Children Underweight')
