@@ -28,7 +28,7 @@ def stdDev(x):
 	for k in range(len(x)):
 		xOut=xOut+(x[k]-xAvg)**2
 	xOut=xOut/(k+1)
-	xOut=math.sqrt(xOut)
+	xOut=sqrt(xOut)
 	return xOut
 
 def Variance(x):
@@ -220,7 +220,9 @@ countryNum=countryNameToNum[country]
 year=np.arange(1800,1800+nyears)
 year=np.ma.masked_array(year,stuntingMask[countryNum])
 plt.clf() # clears the figure, do this before and after every plot
-plt.plot(year,stuntingCount[countryNum], '*b')
+print(year)
+print(stuntingCount[countryNum])
+plt.plot(np.ma.compressed(year),np.ma.compressed(stuntingCount[countryNum]), '*b')
 plt.title(country+' Stunting Percent')
 plt.grid(True)
 plt.ylabel('Percent Children under 5 Stunted')
@@ -283,14 +285,13 @@ country='Malawi'
 countryNum=countryNameToNum[country]
 plt.clf()
 gdpM=np.ma.masked_array(gdp[countryNum],stuntingMask[countryNum])
-plt.plot(gdpM,stuntingCount[countryNum], '*b')
+plt.plot(np.ma.compressed(gdpM),np.ma.compressed(stuntingCount[countryNum]), '*b')
 plt.title(country+' Stunting Percent by GDP')
 plt.grid(True)
 plt.ylabel('Percent Children under 5 Stunted')
 plt.xlabel('GDP per Capita')
 plt.savefig(wdfigs+'stuntingbygdp'+country+'.pdf')
 plt.clf()
-exit()
 
 ###correlating stunting and gdp in a country
 country='Malawi'
@@ -298,5 +299,6 @@ countryNum=countryNameToNum[country]
 year=np.arange(1800,1800+nyears)
 year=np.ma.masked_array(year,stuntingMask[countryNum])
 gdpmaskbystunt=np.ma.masked_array(gdp,stuntingMask)
-print(np.ma.corrcoef(gdp[countryNum],stuntingCount[countryNum]))
-print(np.cov((gdp[countryNum],stuntingCount[countryNum])))
+##print(np.ma.corrcoef(gdp[countryNum],stuntingCount[countryNum]))
+##print(np.cov((gdp[countryNum],stuntingCount[countryNum])))
+##corr(gdp[countryNum],stuntingCount[countryNum])
