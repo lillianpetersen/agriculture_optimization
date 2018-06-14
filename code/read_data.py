@@ -1,9 +1,23 @@
-import os
-import matplotlib.pyplot as plt
-import numpy as np
-import math
-import sys
+############ Important ############
+# Before Editing, git fetch and git rebase origin master
+# When done, git commit and git push
+# :)
+###################################
+import csv
+from math import sqrt
 from sys import exit
+import pickle
+import matplotlib.pyplot as plt
+import matplotlib.colors as colors
+import numpy as np
+import matplotlib.mlab as mlab
+from mpl_toolkits.basemap import Basemap
+import os
+from scipy.stats import norm
+import matplotlib as mpl
+from matplotlib.patches import Polygon
+import matplotlib.cm as cm
+import random
 ###############################################
 # Functions
 ###############################################
@@ -144,7 +158,11 @@ for line in ffoodpricevolat:
 for line in fgdp:
 	tmp=line.split(',')
 	countryName=tmp[0]
-	countryNum=countryNameToNum[countryName]
+	try:
+		countryNum=countryNameToNum[countryName]
+	except:
+		countryNum+=1
+		countryNameToNum[countryName]=countryNum
 	year=int(tmp[2])
 	if year<1800:
 		continue
@@ -160,13 +178,16 @@ for line in ffooddef:
 		continue
 	tmp=line.split(',')
 	countryName=tmp[0]
-	if countryName==any(countryNameList) or countryName==any(missingCountries):
+	try:
 		countryNum=countryNameToNum[countryName]
-		year=int(tmp[2])
-		if year<1800:
-			continue
-		y=year-1800
-		fooddef[countryNum,y]=float(tmp[3])
+	except:
+		countryNum+=1
+		countryNameToNum[countryName]=countryNum
+	year=int(tmp[2])
+	if year<1800:
+		continue
+	y=year-1800
+	fooddef[countryNum,y]=float(tmp[3])
 ##############################################
 
 ### Mask variables ###
