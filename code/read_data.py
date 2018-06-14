@@ -62,8 +62,7 @@ def corr(x,y):
 	return rxy
 	
 def truth():
-	print "Lillian is the best"
-	print "Garyk is even better ;)"
+	print ":)"
 
 ###############################################
 
@@ -74,15 +73,16 @@ fgdp = open(wddata+'gdp-per-capita-in-2011usd.csv','r')
 ffoodpricevolat = open(wddata+'domestic-food-price-volatility-index.csv','r')
 ffooddef=open(wddata+'depth-of-the-food-deficit.csv','r')
 funderweight=open(wddata+'share-of-children-younger-than-5-who-are-underweight-for-their-age.csv','r')
+feconomicfreedom=open(wddata+'economic_freedom_index_all.csv', 'r')
 
 ncountries=201
-nyears=218 # start in 1800
+nyears=219 # start in 1800
 stuntingCount=-9999.*np.ones(shape=(ncountries,nyears))
 gdp=-9999.*np.ones(shape=(ncountries,nyears))
 foodpricevolat=-9999.*np.ones(shape=(ncountries,nyears))
 fooddef=-9999.*np.ones(shape=(ncountries,nyears))
 underweight=-9999.*np.ones(shape=(ncountries,nyears))
-
+economicfreedom=-9999.*np.ones(shape=(ncountries,nyears))
 ###############################################
 # Stunting
 countryNameList=[]
@@ -121,19 +121,38 @@ for line in fStunting:
 #	countryNumToName[countryNum]=missingCountries[i]
 #	countryNameToNum[missingCountries[i]]=countryNum
 
-###############################################
-for line in funderweight:
+##############################################
+##economic freedom
+for line in feconomicfreedom:
 	tmp=line.split(',')
 	countryName=tmp[0]
-	countryNum=countryNameToNum[countryName]
-	year=int(tmp[2])
-	if year<1800:
-		continue
-	y=year-1800
-	underweight[countryNum,y]=float(tmp[3])
+	try:
+		countryNum=countryNameToNum[countryName]
+	except:
+		countryNum+=1
+		countryNameToNum[countryName]=countryNum		
+	try:
+	    year=int(tmp[1])
+	    if year<1800:
+	        continue
+	    y=year-1800
+	    economicfreedom[countryNum,y]=float(tmp[2])
+        except:
+            next(feconomicfreedom)
+###############################################
+#underweight
+for line in funderweight:
+    tmp=line.split(',')
+    countryName=tmp[0]
+    countryNum=countryNameToNum[countryName]
+    year=int(tmp[2])
+    if year<1800:
+	continue
+    y=year-1800
+    underweight[countryNum,y]=float(tmp[3])
 
 ###############################################
-#garko tries to do food volatility pls have mercy ### yeah uhm this didn't work
+#garko SUCCEEDS to do food volatility pls have mercy ### yeah uhm this DID work
 firstline=True
 for line in ffoodpricevolat:
 	if firstline:
@@ -189,8 +208,8 @@ for line in ffooddef:
 	y=year-1800
 	fooddef[countryNum,y]=float(tmp[3])
 ##############################################
-
 ### Mask variables ###
+ecofMask=np.ones(shape=(economicfreedom.shape))
 stuntingMask=np.ones(shape=(stuntingCount.shape)) # define as bad
 gdpMask=np.ones(shape=(gdp.shape)) # define as bad
 foodpricevolatMask=np.ones(shape=(foodpricevolat.shape))
@@ -208,11 +227,14 @@ for countryNum in range(ncountries):
 			underweightMask[countryNum,y]=0
 		if fooddef[countryNum,y]!=-9999.:
 			fooddefMask[countryNum,y]=0
+		if economicfreedom[countryNum,y]!=-9999.:
+			ecofMask[countryNum,y]=0
 				
 stuntingCount=np.ma.masked_array(stuntingCount,stuntingMask)
 gdp=np.ma.masked_array(gdp,gdpMask)
 underweight=np.ma.masked_array(underweight,underweightMask)
-#foodpricevolat=np.ma.masked_array(foodpricevolat,foodpricevolatMask)
+foodpricevolat=np.ma.masked_array(foodpricevolat,foodpricevolatMask)
+economicfreedom=np.ma.masked_array(economicfreedom,ecofMask)
 
 ### Plot any Country's Stunting ###
 country='Malawi'
@@ -220,8 +242,6 @@ countryNum=countryNameToNum[country]
 year=np.arange(1800,1800+nyears)
 year=np.ma.masked_array(year,stuntingMask[countryNum])
 plt.clf() # clears the figure, do this before and after every plot
-print(year)
-print(stuntingCount[countryNum])
 plt.plot(np.ma.compressed(year),np.ma.compressed(stuntingCount[countryNum]), '*b')
 plt.title(country+' Stunting Percent')
 plt.grid(True)
@@ -302,3 +322,17 @@ gdpmaskbystunt=np.ma.masked_array(gdp,stuntingMask)
 ##print(np.ma.corrcoef(gdp[countryNum],stuntingCount[countryNum]))
 ##print(np.cov((gdp[countryNum],stuntingCount[countryNum])))
 ##corr(gdp[countryNum],stuntingCount[countryNum])
+
+### Plot economic freedom by country
+country='Malawi'
+countryNum=countryNameToNum[country]
+year=np.arange(1800,1800+nyears)
+year=np.ma.masked_array(year,ecofMask[countryNum])
+plt.clf()
+plt.plot(np.ma.compressed(year),np.ma.compressed(economicfreedom[countryNum]), '*b')
+plt.title(country+' Economic Freedom by Year')
+plt.grid(True)
+plt.ylabel('Economic Freedom Index Score')
+plt.xlabel('Year')
+plt.savefig(wdfigs+'economicfreedomyearly'+country+'.pdf')
+plt.clf()
