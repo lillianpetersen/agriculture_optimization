@@ -407,4 +407,4 @@ print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
 tmp2=np.ma.masked_array(stuntingCount, stuntingMask)
 tmp=np.ma.masked_array(economicfreedom, stuntingMask)
 print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
-##
+## P is very small
