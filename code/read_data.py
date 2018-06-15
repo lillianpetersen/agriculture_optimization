@@ -230,11 +230,20 @@ for countryNum in range(ncountries):
 		if economicfreedom[countryNum,y]!=-9999.:
 			ecofMask[countryNum,y]=0
 				
+<<<<<<< Updated upstream
 stuntingCount=np.ma.masked_array(stuntingCount,stuntingMask)
 gdp=np.ma.masked_array(gdp,gdpMask)
 underweight=np.ma.masked_array(underweight,underweightMask)
 foodpricevolat=np.ma.masked_array(foodpricevolat,foodpricevolatMask)
 economicfreedom=np.ma.masked_array(economicfreedom,ecofMask)
+=======
+stuntingCountM=np.ma.masked_array(stuntingCount,stuntingMask)
+gdpM=np.ma.masked_array(gdp,gdpMask)
+underweightM=np.ma.masked_array(underweight,underweightMask)
+foodpricevolatM=np.ma.masked_array(foodpricevolat,foodpricevolatMask)
+economicfreedomM=np.ma.masked_array(economicfreedom,ecofMask)
+percentinsecureM=np.ma.masked_array(percentinsecure,insecureMask)
+>>>>>>> Stashed changes
 
 ### Plot any Country's Stunting ###
 country='Malawi'
@@ -361,5 +370,9 @@ economicFreedomtmp=np.ma.masked_array(economicfreedom
 
 
 
-
+###################################################
+# Percent food insecure correlated with freedom
+tmp2=np.ma.masked_array(underweight,underweightMask)
+tmp=np.ma.masked_array(economicfreedom,underweightMask)
+print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
 
