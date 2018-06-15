@@ -74,6 +74,7 @@ ffoodpricevolat = open(wddata+'domestic-food-price-volatility-index.csv','r')
 ffooddef=open(wddata+'depth-of-the-food-deficit.csv','r')
 funderweight=open(wddata+'share-of-children-younger-than-5-who-are-underweight-for-their-age.csv','r')
 feconomicfreedom=open(wddata+'economic_freedom_index_all.csv', 'r')
+fpercentinsecure=open(wddata+'share-of-population-with-severe-food-insecurity.csv', 'r')
 
 ncountries=201
 nyears=219 # start in 1800
@@ -83,6 +84,7 @@ foodpricevolat=-9999.*np.ones(shape=(ncountries,nyears))
 fooddef=-9999.*np.ones(shape=(ncountries,nyears))
 underweight=-9999.*np.ones(shape=(ncountries,nyears))
 economicfreedom=-9999.*np.ones(shape=(ncountries,nyears))
+percentinsecure=-9999.*np.ones(shape=(ncountries,nyears))
 ###############################################
 # Stunting
 countryNameList=[]
@@ -122,6 +124,29 @@ for line in fStunting:
 #	countryNameToNum[missingCountries[i]]=countryNum
 
 ##############################################
+##percent insecure
+firstline=True
+for line in fpercentinsecure:
+        if firstline:
+		firstline = False
+		continue
+	tmp=line.split(',')
+	countryName=tmp[0]
+	try:
+		countryNum=countryNameToNum[countryName]
+	except:
+		countryNum+=1
+		countryNameToNum[countryName]=countryNum		
+	try:
+	    year=int(tmp[2])
+	    if year<1800:
+	        continue
+	    y=year-1800
+	    percentinsecure[countryNum,y]=float(tmp[3])
+        except:
+            continue
+
+##############################################
 ##economic freedom
 for line in feconomicfreedom:
 	tmp=line.split(',')
@@ -138,7 +163,7 @@ for line in feconomicfreedom:
 	    y=year-1800
 	    economicfreedom[countryNum,y]=float(tmp[2])
         except:
-            next(feconomicfreedom)
+            continue
 ###############################################
 #underweight
 for line in funderweight:
@@ -214,7 +239,8 @@ stuntingMask=np.ones(shape=(stuntingCount.shape)) # define as bad
 gdpMask=np.ones(shape=(gdp.shape)) # define as bad
 foodpricevolatMask=np.ones(shape=(foodpricevolat.shape))
 fooddefMask=np.ones(shape=(fooddef.shape))
-underweightMask=np.ones(shape=(fooddef.shape))
+underweightMask=np.ones(shape=(underweight.shape))
+insecureMask=np.ones(shape=(percentinsecure.shape))
 for countryNum in range(ncountries):
 	for y in range(nyears):
 		if stuntingCount[countryNum,y]!=-9999.:
@@ -229,21 +255,15 @@ for countryNum in range(ncountries):
 			fooddefMask[countryNum,y]=0
 		if economicfreedom[countryNum,y]!=-9999.:
 			ecofMask[countryNum,y]=0
-				
-<<<<<<< Updated upstream
-stuntingCount=np.ma.masked_array(stuntingCount,stuntingMask)
-gdp=np.ma.masked_array(gdp,gdpMask)
-underweight=np.ma.masked_array(underweight,underweightMask)
-foodpricevolat=np.ma.masked_array(foodpricevolat,foodpricevolatMask)
-economicfreedom=np.ma.masked_array(economicfreedom,ecofMask)
-=======
+		if percentinsecure[countryNum,y]!=-9999.:
+			insecureMask[countryNum,y]=0
+
 stuntingCountM=np.ma.masked_array(stuntingCount,stuntingMask)
 gdpM=np.ma.masked_array(gdp,gdpMask)
 underweightM=np.ma.masked_array(underweight,underweightMask)
 foodpricevolatM=np.ma.masked_array(foodpricevolat,foodpricevolatMask)
 economicfreedomM=np.ma.masked_array(economicfreedom,ecofMask)
 percentinsecureM=np.ma.masked_array(percentinsecure,insecureMask)
->>>>>>> Stashed changes
 
 ### Plot any Country's Stunting ###
 country='Malawi'
@@ -251,7 +271,7 @@ countryNum=countryNameToNum[country]
 year=np.arange(1800,1800+nyears)
 year=np.ma.masked_array(year,stuntingMask[countryNum])
 plt.clf() # clears the figure, do this before and after every plot
-plt.plot(np.ma.compressed(year),np.ma.compressed(stuntingCount[countryNum]), '*b')
+plt.plot(np.ma.compressed(year),np.ma.compressed(stuntingCountM[countryNum]), '*b')
 plt.title(country+' Stunting Percent')
 plt.grid(True)
 plt.ylabel('Percent Children under 5 Stunted')
@@ -263,7 +283,7 @@ countryNum=countryNameToNum[country]
 year=np.arange(1800,1800+nyears)
 year=np.ma.masked_array(year,stuntingMask[countryNum])
 plt.clf() # clears the figure, do this before and after every plot
-plt.plot(np.ma.compressed(year),np.ma.compressed(stuntingCount[countryNum]), '*b')
+plt.plot(np.ma.compressed(year),np.ma.compressed(stuntingCountM[countryNum]), '*b')
 plt.title(country+' Stunting Percent')
 plt.grid(True)
 plt.ylabel('Percent Children under 5 Stunted')
@@ -302,7 +322,7 @@ countryNum=countryNameToNum[country]
 year=np.arange(1800,1800+nyears)
 year=np.ma.masked_array(year,underweightMask[countryNum])
 plt.clf()
-plt.plot(np.ma.compressed(year),np.ma.compressed(underweight[countryNum]),'*b')
+plt.plot(np.ma.compressed(year),np.ma.compressed(underweightM[countryNum]),'*b')
 plt.title(country+' Percent ChildrenUnderweight')
 plt.grid(True)
 plt.ylabel('Percent Children Underweight')
@@ -314,7 +334,7 @@ country='Malawi'
 countryNum=countryNameToNum[country]
 plt.clf()
 gdpM=np.ma.masked_array(gdp[countryNum],stuntingMask[countryNum])
-plt.plot(np.ma.compressed(gdpM),np.ma.compressed(stuntingCount[countryNum]), '*b')
+plt.plot(np.ma.compressed(gdpM),np.ma.compressed(stuntingCountM[countryNum]), '*b')
 plt.title(country+' Stunting Percent by GDP')
 plt.grid(True)
 plt.ylabel('Percent Children under 5 Stunted')
@@ -338,7 +358,7 @@ countryNum=countryNameToNum[country]
 year=np.arange(1800,1800+nyears)
 year=np.ma.masked_array(year,ecofMask[countryNum])
 plt.clf()
-plt.plot(np.ma.compressed(year),np.ma.compressed(economicfreedom[countryNum]), '*b')
+plt.plot(np.ma.compressed(year),np.ma.compressed(economicfreedomM[countryNum]), '*b')
 plt.title(country+' Economic Freedom by Year')
 plt.grid(True)
 plt.ylabel('Economic Freedom Index Score')
@@ -351,7 +371,7 @@ plt.clf()
 # Corrs
 ##################################################
 
-economicFreedomtmp=np.ma.masked_array(economicfreedom
+##economicFreedomtmp=np.ma.masked_array(economicfreedom)
 
 
 
@@ -371,8 +391,20 @@ economicFreedomtmp=np.ma.masked_array(economicfreedom
 
 
 ###################################################
-# Percent food insecure correlated with freedom
+# Percent underweight correlated with freedom
 tmp2=np.ma.masked_array(underweight,underweightMask)
 tmp=np.ma.masked_array(economicfreedom,underweightMask)
 print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
+## P value 0.2554 ; SAD!
 
+# Percent foodinsecure correlated with freedom
+tmp2=np.ma.masked_array(percentinsecure,insecureMask)
+tmp=np.ma.masked_array(economicfreedom,insecureMask)
+print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
+## P value 0.0015 
+
+# Percent stunting correlated with freedom
+tmp2=np.ma.masked_array(stuntingCount, stuntingMask)
+tmp=np.ma.masked_array(economicfreedom, stuntingMask)
+print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
+##
