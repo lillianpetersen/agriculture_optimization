@@ -369,7 +369,6 @@ plt.clf()
 
 ##################################################
 # Corrs: I fixed them with a mask. Most of them got stronger. Check the plots... not too great. 
-#re: economic freedom Stunting now strongest, Food insecurity now weakest
 ##################################################
 
 # Percent underweight correlated with freedom, with working mask
@@ -469,7 +468,6 @@ plt.ylabel('Food Deficit')
 plt.savefig(wdfigs+'fooddeficitbyeconomicfreedom.pdf')
 plt.clf()
 #######################################################
-#I bet gdp is strongest... yep
 # GDP corr with Stunting
 compMask=np.ones(shape=(stuntingCount.shape))
 for countryNum in range(ncountries):
@@ -489,7 +487,7 @@ plt.ylabel('Percent Stunted')
 plt.savefig(wdfigs+'stuntingbyGDPcorrelated.pdf')
 plt.clf()
 
-#checking economic freedom vs gdp
+#checking economic freedom vs gdp. strong
 compMask=np.ones(shape=(economicfreedom.shape))
 for countryNum in range(ncountries):
 	for y in range(nyears):
