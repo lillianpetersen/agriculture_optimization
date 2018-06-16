@@ -368,43 +368,142 @@ plt.clf()
 
 
 ##################################################
-# Corrs
+# Corrs: I fixed them with a mask. Most of them got stronger. Check the plots... not too great. 
+#re: economic freedom Stunting now strongest, Food insecurity now weakest
 ##################################################
 
-##economicFreedomtmp=np.ma.masked_array(economicfreedom)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-###################################################
-# Percent underweight correlated with freedom
-tmp2=np.ma.masked_array(underweight,underweightMask)
-tmp=np.ma.masked_array(economicfreedom,underweightMask)
+# Percent underweight correlated with freedom, with working mask
+compMask=np.ones(shape=(underweight.shape))
+for countryNum in range(ncountries):
+	for y in range(nyears):
+		if underweight[countryNum,y]!=-9999. and economicfreedom[countryNum,y]!=-9999.:
+		    compMask[countryNum,y]=0
+tmp2=np.ma.masked_array(underweight,compMask)
+tmp=np.ma.masked_array(economicfreedom,compMask)
 print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
-## P value 0.2554 ; SAD!
+## P value 0.0001
+#plot
+plt.clf()
+plt.plot(np.ma.compressed(tmp),np.ma.compressed(tmp2), '*b')
+plt.title('Economic Freedom versus Percent Underweight')
+plt.grid(True)
+plt.xlabel('Economic Freedom Index Score')
+plt.ylabel('Share Underweight')
+plt.savefig(wdfigs+'underweightbyeconomicfreedom.pdf')
+plt.clf()
 
-# Percent foodinsecure correlated with freedom
-tmp2=np.ma.masked_array(percentinsecure,insecureMask)
-tmp=np.ma.masked_array(economicfreedom,insecureMask)
+# Percent foodinsecure correlated with freedom, with working mask
+compMask=np.ones(shape=(percentinsecure.shape))
+for countryNum in range(ncountries):
+	for y in range(nyears):
+		if percentinsecure[countryNum,y]!=-9999. and economicfreedom[countryNum,y]!=-9999.:
+		    compMask[countryNum,y]=0
+tmp2=np.ma.masked_array(percentinsecure,compMask)
+tmp=np.ma.masked_array(economicfreedom,compMask)
 print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
-## P value 0.0015 
+## P value 0.0323
+#plotting food insecure to freedom
+plt.clf()
+plt.plot(np.ma.compressed(tmp),np.ma.compressed(tmp2), '*b')
+plt.title('Economic Freedom versus Food Insecurity')
+plt.grid(True)
+plt.xlabel('Economic Freedom Index Score')
+plt.ylabel('Share of population with severe food insecurity')
+plt.savefig(wdfigs+'Percentfoodinsecurebyeconomicfreedom.pdf')
+plt.clf()
 
-# Percent stunting correlated with freedom
-tmp2=np.ma.masked_array(stuntingCount, stuntingMask)
-tmp=np.ma.masked_array(economicfreedom, stuntingMask)
+# Percent stunting correlated with freedom, with special mask
+compMask=np.ones(shape=(stuntingCount.shape))
+for countryNum in range(ncountries):
+	for y in range(nyears):
+		if stuntingCount[countryNum,y]!=-9999. and economicfreedom[countryNum,y]!=-9999.:
+		    compMask[countryNum,y]=0
+tmp2=np.ma.masked_array(stuntingCount, compMask)
+tmp=np.ma.masked_array(economicfreedom, compMask)
 print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
-## P is very small
+## P value 0.0001
+plt.clf()
+plt.plot(np.ma.compressed(tmp),np.ma.compressed(tmp2), '*b')
+plt.title('Economic Freedom versus Stunting')
+plt.grid(True)
+plt.xlabel('Economic Freedom Index Score')
+plt.ylabel('Percent Stunted')
+plt.savefig(wdfigs+'stuntingbyeconomicfreedom.pdf')
+plt.clf()
+
+#foodprice volat to ecofr
+compMask=np.ones(shape=(foodpricevolat.shape))
+for countryNum in range(ncountries):
+	for y in range(nyears):
+		if foodpricevolat[countryNum,y]!=-9999. and economicfreedom[countryNum,y]!=-9999.:
+		    compMask[countryNum,y]=0
+tmp2=np.ma.masked_array(foodpricevolat, compMask)
+tmp=np.ma.masked_array(economicfreedom, compMask)
+print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
+## P value 0.0001
+plt.clf()
+plt.plot(np.ma.compressed(tmp),np.ma.compressed(tmp2), '*b')
+plt.title('Economic Freedom versus Food Price Volatility')
+plt.grid(True)
+plt.xlabel('Economic Freedom Index Score')
+plt.ylabel('Food Price Volatility')
+plt.savefig(wdfigs+'foodpricevolatilitybyeconomicfreedom.pdf')
+plt.clf()
+
+#food deficit to economic freedom
+compMask=np.ones(shape=(fooddef.shape))
+for countryNum in range(ncountries):
+	for y in range(nyears):
+		if fooddef[countryNum,y]!=-9999. and economicfreedom[countryNum,y]!=-9999.:
+		    compMask[countryNum,y]=0
+tmp2=np.ma.masked_array(fooddef, compMask)
+tmp=np.ma.masked_array(economicfreedom, compMask)
+print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
+## P value 0.0001
+plt.clf()
+plt.plot(np.ma.compressed(tmp),np.ma.compressed(tmp2), '*b')
+plt.title('Food Deficit by Economic Freedom')
+plt.grid(True)
+plt.xlabel('Economic Freedom Index Score')
+plt.ylabel('Food Deficit')
+plt.savefig(wdfigs+'fooddeficitbyeconomicfreedom.pdf')
+plt.clf()
+#######################################################
+#I bet gdp is strongest... yep
+# GDP corr with Stunting
+compMask=np.ones(shape=(stuntingCount.shape))
+for countryNum in range(ncountries):
+	for y in range(nyears):
+		if stuntingCount[countryNum,y]!=-9999. and gdp[countryNum,y]!=-9999.:
+		    compMask[countryNum,y]=0
+tmp2=np.ma.masked_array(stuntingCount, compMask)
+tmp=np.ma.masked_array(gdp, compMask)
+print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
+## P value 0.0001
+plt.clf()
+plt.plot(np.ma.compressed(tmp),np.ma.compressed(tmp2), '*b')
+plt.title('GDP per capita versus Stunting')
+plt.grid(True)
+plt.xlabel('GDP per Capita')
+plt.ylabel('Percent Stunted')
+plt.savefig(wdfigs+'stuntingbyGDPcorrelated.pdf')
+plt.clf()
+
+#checking economic freedom vs gdp
+compMask=np.ones(shape=(economicfreedom.shape))
+for countryNum in range(ncountries):
+	for y in range(nyears):
+		if economicfreedom[countryNum,y]!=-9999. and gdp[countryNum,y]!=-9999.:
+		    compMask[countryNum,y]=0
+tmp=np.ma.masked_array(economicfreedom, compMask)
+tmp2=np.ma.masked_array(gdp, compMask)
+print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
+## P value 0.0001
+plt.clf()
+plt.plot(np.ma.compressed(tmp),np.ma.compressed(tmp2), '*b')
+plt.title('GDP per capita by Economic Freedom')
+plt.grid(True)
+plt.ylabel('GDP per Capita')
+plt.xlabel('Economic Freedom Index')
+plt.savefig(wdfigs+'GDPbyEconomicFreedom.pdf')
+plt.clf()
