@@ -177,7 +177,7 @@ for line in funderweight:
     underweight[countryNum,y]=float(tmp[3])
 
 ###############################################
-#garko SUCCEEDS to do food volatility pls have mercy ### yeah uhm this DID work
+#food volat
 firstline=True
 for line in ffoodpricevolat:
 	if firstline:
@@ -264,7 +264,6 @@ underweightM=np.ma.masked_array(underweight,underweightMask)
 foodpricevolatM=np.ma.masked_array(foodpricevolat,foodpricevolatMask)
 economicfreedomM=np.ma.masked_array(economicfreedom,ecofMask)
 percentinsecureM=np.ma.masked_array(percentinsecure,insecureMask)
-
 ### Plot any Country's Stunting ###
 country='Malawi'
 countryNum=countryNameToNum[country]
