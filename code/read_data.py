@@ -358,17 +358,17 @@ plt.ylabel('Percent Children under 5 Stunted')
 plt.xlabel('GDP per Capita')
 plt.savefig(wdfigs+'stuntingbygdp'+country+'.pdf')
 plt.clf()
-exit()
 
-###correlating stunting and gdp in a country
-country='Malawi'
-countryNum=countryNameToNum[country]
-year=np.arange(1800,1800+nyears)
-year=np.ma.masked_array(year,stuntingMask[countryNum])
-gdpmaskbystunt=np.ma.masked_array(gdp,stuntingMask)
-##print(np.ma.corrcoef(gdp[countryNum],stuntingCount[countryNum]))
-##print(np.cov((gdp[countryNum],stuntingCount[countryNum])))
-##corr(gdp[countryNum],stuntingCount[countryNum])
+###correlating stunting and gdp in every country
+##### lol I don't even know what I was trying to do here...
+#corrGdpStunting=np.zeros(shape=(len(countryNameToNum)))
+#for countryNum in range(len(countryNameToNum)):
+#	countryName=countryNumToName[countryNum]
+#	year=np.arange(1800,1800+nyears)
+#	year=np.ma.compressed(np.ma.masked_array(year,stuntingMask[countryNum]))
+#	gdpmaskbystunt=np.ma.compressed(np.ma.masked_array(gdp,stuntingMask))
+#	corrGdpStunting[countryNum]=corr(gdpmaskbystunt,stuntingCountM[countryNum])
+exit()
 
 ### Plot economic freedom by country
 country='Malawi'
