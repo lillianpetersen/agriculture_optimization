@@ -97,6 +97,7 @@ for line in fStunting:
 
 	### Read Variables ###
 	countryName=tmp[0]
+	countryName=countryName.replace(' ','_')
 	countryNameList.append(countryName)
 	year=int(tmp[2])
 	y=year-1800
@@ -127,54 +128,57 @@ for line in fStunting:
 ##percent insecure
 firstline=True
 for line in fpercentinsecure:
-        if firstline:
+	if firstline:
 		firstline = False
 		continue
 	tmp=line.split(',')
 	countryName=tmp[0]
+	countryName=countryName.replace(' ','_')
 	try:
 		countryNum=countryNameToNum[countryName]
 	except:
 		countryNum+=1
 		countryNameToNum[countryName]=countryNum		
 	try:
-	    year=int(tmp[2])
-	    if year<1800:
-	        continue
-	    y=year-1800
-	    percentinsecure[countryNum,y]=float(tmp[3])
-        except:
-            continue
+		year=int(tmp[2])
+		if year<1800:
+			continue
+		y=year-1800
+		percentinsecure[countryNum,y]=float(tmp[3])
+	except:
+		continue
 
 ##############################################
 ##economic freedom
 for line in feconomicfreedom:
 	tmp=line.split(',')
 	countryName=tmp[0]
+	countryName=countryName.replace(' ','_')
 	try:
 		countryNum=countryNameToNum[countryName]
 	except:
 		countryNum+=1
 		countryNameToNum[countryName]=countryNum		
 	try:
-	    year=int(tmp[1])
-	    if year<1800:
-	        continue
-	    y=year-1800
-	    economicfreedom[countryNum,y]=float(tmp[2])
-        except:
-            continue
+		year=int(tmp[1])
+		if year<1800:
+			continue
+		y=year-1800
+		economicfreedom[countryNum,y]=float(tmp[2])
+	except:
+		continue
 ###############################################
 #underweight
 for line in funderweight:
-    tmp=line.split(',')
-    countryName=tmp[0]
-    countryNum=countryNameToNum[countryName]
-    year=int(tmp[2])
-    if year<1800:
-	continue
-    y=year-1800
-    underweight[countryNum,y]=float(tmp[3])
+	tmp=line.split(',')
+	countryName=tmp[0]
+	countryName=countryName.replace(' ','_')
+	countryNum=countryNameToNum[countryName]
+	year=int(tmp[2])
+	if year<1800:
+		continue
+	y=year-1800
+	underweight[countryNum,y]=float(tmp[3])
 
 ###############################################
 #food volat
@@ -185,6 +189,7 @@ for line in ffoodpricevolat:
 		continue
 	tmp=line.split(',')
 	countryName=tmp[0]
+	countryName=countryName.replace(' ','_')
 	try:
 		countryNum=countryNameToNum[countryName]
 	except:
@@ -202,6 +207,7 @@ for line in ffoodpricevolat:
 for line in fgdp:
 	tmp=line.split(',')
 	countryName=tmp[0]
+	countryName=countryName.replace(' ','_')
 	try:
 		countryNum=countryNameToNum[countryName]
 	except:
@@ -222,6 +228,7 @@ for line in ffooddef:
 		continue
 	tmp=line.split(',')
 	countryName=tmp[0]
+	countryName=countryName.replace(' ','_')
 	try:
 		countryNum=countryNameToNum[countryName]
 	except:
@@ -265,25 +272,19 @@ foodpricevolatM=np.ma.masked_array(foodpricevolat,foodpricevolatMask)
 economicfreedomM=np.ma.masked_array(economicfreedom,ecofMask)
 percentinsecureM=np.ma.masked_array(percentinsecure,insecureMask)
 ### Plot any Country's Stunting ###
-country='Malawi'
+country='North_Korea'
+#country='Malawi'
 countryNum=countryNameToNum[country]
 year=np.arange(1800,1800+nyears)
 year=np.ma.masked_array(year,stuntingMask[countryNum])
-plt.clf() # clears the figure, do this before and after every plot
-plt.plot(np.ma.compressed(year),np.ma.compressed(stuntingCountM[countryNum]), '*b')
-plt.title(country+' Stunting Percent')
-plt.grid(True)
-plt.ylabel('Percent Children under 5 Stunted')
-plt.savefig(wdfigs+'stuntingCount'+country+'.pdf')
-plt.clf()
+x=np.ma.compressed(year)
+ydata=np.ma.compressed(stuntingCountM[countryNum])
+slope,bIntercept=np.polyfit(x,ydata,1)
+yfit=slope*x+bIntercept
 
-country='North Korea'
-countryNum=countryNameToNum[country]
-year=np.arange(1800,1800+nyears)
-year=np.ma.masked_array(year,stuntingMask[countryNum])
 plt.clf() # clears the figure, do this before and after every plot
-plt.plot(np.ma.compressed(year),np.ma.compressed(stuntingCountM[countryNum]), '*b')
-plt.title(country+' Stunting Percent')
+plt.plot(x,ydata, '*b',x,yfit,'g')
+plt.title(country+' Stunting Percent, Slope = '+str(np.round(slope,2)))
 plt.grid(True)
 plt.ylabel('Percent Children under 5 Stunted')
 plt.savefig(wdfigs+'stuntingCount'+country+'.pdf')
@@ -294,9 +295,14 @@ country='Malawi'
 countryNum=countryNameToNum[country]
 year=np.arange(1800,1800+nyears)
 year=np.ma.masked_array(year,gdpMask[countryNum])
+x=np.ma.compressed(year)
+ydata=np.ma.compressed(np.ma.masked_array(gdp[countryNum],gdpMask[countryNum]))
+slope,bIntercept=np.polyfit(x,ydata,1)
+yfit=slope*x+bIntercept
+
 plt.clf() # clears the figure, do this before and after every plot
-plt.plot(year,gdp[countryNum], '*b')
-plt.title(country+' GDP')
+plt.plot(x,ydata, '*-b',x,yfit,'g')
+plt.title(country+' GDP, Slope = '+str(np.round(slope,2)))
 plt.grid(True)
 plt.ylabel('GDP Per Capita in 2011 USD')
 plt.savefig(wdfigs+'GDP'+country+'.pdf')
@@ -307,9 +313,13 @@ country='Benin'
 countryNum=countryNameToNum[country]
 year=np.arange(1800,1800+nyears)
 year=np.ma.masked_array(year,foodpricevolatMask[countryNum])
-plt.clf()
-plt.plot(year,foodpricevolat[countryNum], '*b')
-plt.title(country+' Food Price Volatility')
+x=np.ma.compressed(year)
+ydata=np.ma.compressed(np.ma.masked_array(foodpricevolat[countryNum],foodpricevolatMask[countryNum]))
+slope,bIntercept=np.polyfit(x,ydata,1)
+yfit=slope*x+bIntercept
+
+plt.plot(x,ydata, '*-b',x,yfit,'g')
+plt.title(country+' Food Price Volatility, Slope = '+str(np.round(slope,2)))
 plt.grid(True)
 plt.ylabel('Domestic Food Price Volatility Index')
 plt.savefig(wdfigs+'FoodPriceVolatility'+country+'.pdf')
@@ -320,9 +330,13 @@ country='Benin'
 countryNum=countryNameToNum[country]
 year=np.arange(1800,1800+nyears)
 year=np.ma.masked_array(year,underweightMask[countryNum])
-plt.clf()
-plt.plot(np.ma.compressed(year),np.ma.compressed(underweightM[countryNum]),'*b')
-plt.title(country+' Percent ChildrenUnderweight')
+x=np.ma.compressed(year)
+ydata=np.ma.compressed(underweightM[countryNum])
+slope,bIntercept=np.polyfit(x,ydata,1)
+yfit=slope*x+bIntercept
+
+plt.plot(x,ydata, '*-b',x,yfit,'g')
+plt.title(country+' Percent Children Underweight, Slope = '+str(np.round(slope,2)))
 plt.grid(True)
 plt.ylabel('Percent Children Underweight')
 plt.savefig(wdfigs+'percentchildunderweight'+country+'.pdf')
@@ -331,15 +345,20 @@ plt.clf()
 ### Plot Stunting by GDP
 country='Malawi'
 countryNum=countryNameToNum[country]
-plt.clf()
 gdpM=np.ma.masked_array(gdp[countryNum],stuntingMask[countryNum])
-plt.plot(np.ma.compressed(gdpM),np.ma.compressed(stuntingCountM[countryNum]), '*b')
-plt.title(country+' Stunting Percent by GDP')
+x=np.ma.compressed(gdpM)
+ydata=np.ma.compressed(stuntingCountM[countryNum])
+slope,bIntercept=np.polyfit(x,ydata,1)
+yfit=slope*x+bIntercept
+
+plt.plot(x,ydata, '*b',x,yfit,'g')
+plt.title(country+' Stunting Percent by GDP, Slope = '+str(np.round(slope,2)))
 plt.grid(True)
 plt.ylabel('Percent Children under 5 Stunted')
 plt.xlabel('GDP per Capita')
 plt.savefig(wdfigs+'stuntingbygdp'+country+'.pdf')
 plt.clf()
+exit()
 
 ###correlating stunting and gdp in a country
 country='Malawi'
@@ -375,7 +394,7 @@ compMask=np.ones(shape=(underweight.shape))
 for countryNum in range(ncountries):
 	for y in range(nyears):
 		if underweight[countryNum,y]!=-9999. and economicfreedom[countryNum,y]!=-9999.:
-		    compMask[countryNum,y]=0
+			compMask[countryNum,y]=0
 tmp2=np.ma.masked_array(underweight,compMask)
 tmp=np.ma.masked_array(economicfreedom,compMask)
 print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
@@ -395,7 +414,7 @@ compMask=np.ones(shape=(percentinsecure.shape))
 for countryNum in range(ncountries):
 	for y in range(nyears):
 		if percentinsecure[countryNum,y]!=-9999. and economicfreedom[countryNum,y]!=-9999.:
-		    compMask[countryNum,y]=0
+			compMask[countryNum,y]=0
 tmp2=np.ma.masked_array(percentinsecure,compMask)
 tmp=np.ma.masked_array(economicfreedom,compMask)
 print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
@@ -415,7 +434,7 @@ compMask=np.ones(shape=(stuntingCount.shape))
 for countryNum in range(ncountries):
 	for y in range(nyears):
 		if stuntingCount[countryNum,y]!=-9999. and economicfreedom[countryNum,y]!=-9999.:
-		    compMask[countryNum,y]=0
+			compMask[countryNum,y]=0
 tmp2=np.ma.masked_array(stuntingCount, compMask)
 tmp=np.ma.masked_array(economicfreedom, compMask)
 print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
@@ -434,7 +453,7 @@ compMask=np.ones(shape=(foodpricevolat.shape))
 for countryNum in range(ncountries):
 	for y in range(nyears):
 		if foodpricevolat[countryNum,y]!=-9999. and economicfreedom[countryNum,y]!=-9999.:
-		    compMask[countryNum,y]=0
+			compMask[countryNum,y]=0
 tmp2=np.ma.masked_array(foodpricevolat, compMask)
 tmp=np.ma.masked_array(economicfreedom, compMask)
 print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
@@ -453,7 +472,7 @@ compMask=np.ones(shape=(fooddef.shape))
 for countryNum in range(ncountries):
 	for y in range(nyears):
 		if fooddef[countryNum,y]!=-9999. and economicfreedom[countryNum,y]!=-9999.:
-		    compMask[countryNum,y]=0
+			compMask[countryNum,y]=0
 tmp2=np.ma.masked_array(fooddef, compMask)
 tmp=np.ma.masked_array(economicfreedom, compMask)
 print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
@@ -472,7 +491,7 @@ compMask=np.ones(shape=(stuntingCount.shape))
 for countryNum in range(ncountries):
 	for y in range(nyears):
 		if stuntingCount[countryNum,y]!=-9999. and gdp[countryNum,y]!=-9999.:
-		    compMask[countryNum,y]=0
+			compMask[countryNum,y]=0
 tmp2=np.ma.masked_array(stuntingCount, compMask)
 tmp=np.ma.masked_array(gdp, compMask)
 print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
@@ -491,7 +510,7 @@ compMask=np.ones(shape=(economicfreedom.shape))
 for countryNum in range(ncountries):
 	for y in range(nyears):
 		if economicfreedom[countryNum,y]!=-9999. and gdp[countryNum,y]!=-9999.:
-		    compMask[countryNum,y]=0
+			compMask[countryNum,y]=0
 tmp=np.ma.masked_array(economicfreedom, compMask)
 tmp2=np.ma.masked_array(gdp, compMask)
 print(corr(np.ma.compressed(tmp),np.ma.compressed(tmp2)))
